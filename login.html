@@ -137,80 +137,65 @@ document.body.className += ' jsenabled';
 
             <div class="row justify-content-md-center">
                 <div class="col-md-5">
-                    <form class="mt-3" action="back\index.php" method="post" id="login">
+                    <form class="mt-3" action="back/login.php" method="post" id="login">
                         <input id="anchor" type="hidden" name="anchor" value="">
                         <script>document.getElementById('anchor').value = location.hash;</script>
                         <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
-
-
                         <div class="form-group">
                             <label for="username" class="sr-only">
-                                    Nom de l'etudiant
+                                    Pseudo
                             </label>
-                            <input type="text" name="name" id="username"
+                            <input type="text" name="pseudo" id="username"
                                 class="form-control"
                                 value=""
-                                placeholder="Nom de l'etudiant">
+                                placeholder="Pseudo">
                         </div>
-
-                        <div class="form-group">
-                            <label for="username" class="sr-only">
-                                    Post_Nom de l'etudiant
-                            </label>
-                            <input type="text" name="post_nom" id="username"
-                                class="form-control"
-                                value=""
-                                placeholder="Post_nom">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username" class="sr-only">
-                                    Prenom de letudiant
-                            </label>
-                            <input type="text" name="prenom" id="username"
-                                class="form-control"
-                                value=""
-                                placeholder="Prenom">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username" class="sr-only">
-                                    Matricule
-                            </label>
-                            <input type="text" name="matricule" id="username"
-                                class="form-control"
-                                value=""
-                                placeholder="Matricule">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username" class="sr-only">
-                                    Promotion
-                            </label>
-                            <input type="text" name="promotion" id="username"
-                                class="form-control"
-                                value=""
-                                placeholder="Promotion-filiere">
-                        </div>
-                       
                         <div class="form-group">
                             <label for="password" class="sr-only">Mot de passe</label>
                             <input type="password" name="password" id="password" value=""
                                 class="form-control"
                                 placeholder="Mot de passe">
                         </div>
-                            
-                        <div class="form-group">
-                            <label for="password" class="sr-only">confirmer mot de passe</label>
-                            <input type="password" name="confirmpassword" id="password" value=""
-                                class="form-control"
-                                placeholder="confirmer mot de passe">
-                        </div>
+                            <div class="rememberpass mt-3">
+                                <input type="checkbox" name="rememberusername" id="rememberusername" value="1"  />
+                                <label for="rememberusername">Se souvenir du nom d'utilisateur</label>
+                            </div>
 
                         <button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Connexion</button>
-                        <a href="login.html">login</a>
                     </form>
                 </div>
+
+                <div class="col-md-5">
+                    <div class="forgetpass mt-3">
+                        <p><a href="https://www.esisalama.net/elearning/login/forgot_password.php">Vous avez oublié votre nom d'utilisateur et/ou votre mot de passe ?</a></p>
+                    </div>
+
+                    <div class="mt-3">
+                        Votre navigateur doit supporter les cookies
+                        <a class="btn btn-link p-0" role="button"
+    data-container="body" data-toggle="popover"
+    data-placement="right" data-content="&lt;div class=&quot;no-overflow&quot;&gt;&lt;p&gt;Ce site utilise deux cookies.&lt;/p&gt;
+
+&lt;p&gt;Un cookie (essentiel) est utilisé pour la session de travail. Il est habituellement appelé MoodleSession. Vous devez l&#039;autoriser dans votre navigateur afin de pouvoir naviguer sur le site sans avoir à vous reconnecter à tout moment. Ce cookie est supprimé du navigateur et du serveur lorsque vous vous déconnectez ou si vous quittez le navigateur.&lt;/p&gt;
+
+&lt;p&gt;L&#039;autre cookie n&#039;est pas essentiel, mais rend la connexion à Moodle plus facile en mémorisant votre nom d&#039;utilisateur dans le navigateur. Vous n&#039;aurez donc pas à remplir ce champ lors de la prochaine visite. Il porte habituellement le nom MOODLEID. Il est tout à fait sûr de refuser ce cookie. Vous devrez simplement ressaisir votre nom d&#039;utilisateur lors de chaque connexion.&lt;/p&gt;
+&lt;/div&gt; "
+    data-html="true" tabindex="0" data-trigger="focus">
+  <i class="icon fa fa-question-circle text-info fa-fw "  title="Aide sur Votre navigateur doit supporter les cookies" aria-label="Aide sur Votre navigateur doit supporter les cookies"></i>
+</a>
+                    </div>
+
+                    <h6 class="mt-2">Se connecter au moyen du compte :</h6>
+                    <div class="potentialidplist" class="mt-3">
+                            <div class="potentialidp">
+                                <a href="https://www.esisalama.net/elearning/auth/oauth2/login.php?id=2&amp;wantsurl=https%3A%2F%2Fwww.esisalama.net%2Felearning%2F&amp;sesskey=p5mrlo0nU7" title="Google" class="btn btn-secondary btn-block">
+                                        <img src="https://accounts.google.com/favicon.ico" alt="" width="24" height="24"/>
+                                    Google
+                                </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

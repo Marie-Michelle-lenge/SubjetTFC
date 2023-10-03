@@ -1,4 +1,36 @@
+<?php 
+    require 'back/config.php';
+    if(isset($_POST["intitule"]) && isset($_POST["theme"]) && isset($_POST["problematique"]) && isset($_POST["hypothese"]) && isset($_POST["etatArt"])){
+        $intitule=$_POST["intitule"];
+        $theme=$_POST["theme"];
+        $problematique=$_POST["problematique"];
+        $hypothese=$_POST["hypothese"];
+        $etatArt=$_POST["etatArt"];
+        $annAcad=$_POST["annAcad"];
+        if(session_status() == PHP_SESSION_NONE) session_start();
+        $matricule = $_SESSION["matricule"];
+    
 
+        $duplicate=mysqli_query($conn, 'SELECT * FROM  suject where intitule = "$intitule" ');
+        $suject= mysqli_query($conn, 'SELECT * FROM  suject where matricule = "$matricule" ');
+        
+        if(mysqli_num_rows($duplicate) > 0){
+            echo "<script> alert('ce sujec exise');</script>";
+         } elseif (mysqli_num_rows($suject) > 0) {
+            echo "<script> alert('vous avez deja ajoute un suject');</script>";
+         }
+         else{
+            if(session_status() == PHP_SESSION_NONE) session_start();
+            $matricule = $_SESSION["matricule"];
+            $query= 'INSERT INTO suject(intitule,theme,problematique,hypothese,etatArt,annAcad,matricule) VALUES("$intitule","$llltheme","$problematique","$hypothese","$etatArt","$annAcad","$matricule")';
+            mysqli_query($conn,$query);
+            
+            echo "<script> alert('l'enregistrement a reussi');</script>";
+            
+            header("Location: /SubjetTFC/gestion-tfc.php");
+    }}
+    
+?>
 <!DOCTYPE html>
 
 <html  dir="ltr" lang="fr" xml:lang="fr">
@@ -67,7 +99,7 @@ document.body.className += ' jsenabled';
             </li>
             <!-- user_menu -->
             <li class="nav-item d-flex align-items-center">
-                <div class="usermenu"><span class="login">Non connecté.</span></div>
+                <div class="usermenu"><span class="login">connecté.</span></div>
             </li>
         </ul>
 
@@ -137,80 +169,77 @@ document.body.className += ' jsenabled';
 
             <div class="row justify-content-md-center">
                 <div class="col-md-5">
-                    <form class="mt-3" action="back\index.php" method="post" id="login">
+                    <form class="mt-3" action="" method="post" id="login">
                         <input id="anchor" type="hidden" name="anchor" value="">
                         <script>document.getElementById('anchor').value = location.hash;</script>
                         <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
-
-
                         <div class="form-group">
                             <label for="username" class="sr-only">
-                                    Nom de l'etudiant
+                                    intitule du Suject
                             </label>
-                            <input type="text" name="name" id="username"
+                            <input type="text" name="intitule" id="username"
                                 class="form-control"
                                 value=""
-                                placeholder="Nom de l'etudiant">
+                                placeholder="intiltule du suject">
                         </div>
 
                         <div class="form-group">
                             <label for="username" class="sr-only">
-                                    Post_Nom de l'etudiant
+                                    theme
                             </label>
-                            <input type="text" name="post_nom" id="username"
+                            <input type="text" name="theme" id="username"
                                 class="form-control"
                                 value=""
-                                placeholder="Post_nom">
+                                placeholder="Theme">
                         </div>
 
                         <div class="form-group">
                             <label for="username" class="sr-only">
-                                    Prenom de letudiant
+                                    problematique
                             </label>
-                            <input type="text" name="prenom" id="username"
+                            <input type="text" name="problematique" id="username"
                                 class="form-control"
                                 value=""
-                                placeholder="Prenom">
+                                placeholder="problematique">
                         </div>
 
                         <div class="form-group">
                             <label for="username" class="sr-only">
-                                    Matricule
+                                    hypothese
                             </label>
-                            <input type="text" name="matricule" id="username"
+                            <input type="text" name="hypothese" id="username"
                                 class="form-control"
                                 value=""
-                                placeholder="Matricule">
+                                placeholder="hypothese">
                         </div>
 
                         <div class="form-group">
                             <label for="username" class="sr-only">
-                                    Promotion
+                                    etatArt
                             </label>
-                            <input type="text" name="promotion" id="username"
+                            <input type="text" name="etatArt" id="username"
                                 class="form-control"
                                 value=""
-                                placeholder="Promotion-filiere">
-                        </div>
-                       
-                        <div class="form-group">
-                            <label for="password" class="sr-only">Mot de passe</label>
-                            <input type="password" name="password" id="password" value=""
-                                class="form-control"
-                                placeholder="Mot de passe">
-                        </div>
-                            
-                        <div class="form-group">
-                            <label for="password" class="sr-only">confirmer mot de passe</label>
-                            <input type="password" name="confirmpassword" id="password" value=""
-                                class="form-control"
-                                placeholder="confirmer mot de passe">
+                                placeholder="etatArt">
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Connexion</button>
-                        <a href="login.html">login</a>
+                        <div class="form-group">
+                            <label for="username" class="sr-only">
+                                    anneeacademique
+                            </label>
+                            <input type="text" name="annAcad" id="username"
+                                class="form-control"
+                                value=""
+                                placeholder="Annee Academique">
+                        </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Deposer le Suject</button>
                     </form>
                 </div>
+
+                
+            </div>
         </div>
     </div>
 </div>

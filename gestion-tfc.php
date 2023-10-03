@@ -1,3 +1,8 @@
+<?php 
+    require 'back/config.php';
+    if(session_status() == PHP_SESSION_NONE) session_start();
+    $connect= isset($_SESSION["matricule"]);
+?>
 <!DOCTYPE html> 
 <html> 
     <head> 
@@ -9,7 +14,7 @@
         <link href="assets/img/favicon.png" rel="icon" type="image/png" /> 
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" /><![endif]--> 
     </head> 
-    <body> <!-- Barre de navigation/menu --> 
+    <body> <!-- $ de navigation/menu --> 
         <nav class="navbar navbar-inverse navbar-fixed-top"> 
             <div class="container"> <!-- Logo et bouton toggle --> 
                 <div class="navbar-header"> 
@@ -88,119 +93,182 @@
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
         <div class = "container-fluid titre-page titre-fixe-on"> 
             <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Depot de TFC </h1> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Sujet de TFC </h1> 
             </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.html">Accueil</a></li>
-                    <li>TFC</li>
+                    <li><a href = "connexion-tfc.html">inscription</a></li>
+                    <li><a href = "login.html">login</a></li>
                 </ol>
             </div> 
         </div> 
     </div> 
-
-    <div class="container-fluid cadre-principal"> 
-        <div class="container"> 
-            <section class="blog">
-                <div class="container">
-                    <div class="row">	
-            <div id="compte_a_rebours" class="alert alert-info alert-dismissible"><noscript>ISIG-GOMA :: Compte à rebours d'introduction de sujet.</noscript></div>
-            <script type="text/javascript">
-            function compte_a_rebours()
-             {
-             var compte_a_rebours = document.getElementById("compte_a_rebours");
-             
-             var date_actuelle = new Date();
-            var date_evenement = new Date("2023-08-05");
-            var total_secondes = (date_evenement - date_actuelle) / 1000;
-            
-            var prefixe = "<font color='green'>!! ATTENTION !! L'introduction de sujet pour l'année académique 2022-2023 prendra fin dans ";
-            
-            if (total_secondes < 0)
-            {
-            prefixe = "<font color='red'>!! ATTENTION !! L'introduction de sujet pour l'année académique 2022-2023 s'est terminé il y a </font>"; // On modifie le préfixe si la différence est négatif
-            total_secondes = Math.abs(total_secondes); // On ne garde que la valeur absolue
-            }
-            if (total_secondes > 0)
-            {
-            var jours = Math.floor(total_secondes / (60 * 60 * 24));
-            var heures = Math.floor((total_secondes - (jours * 60 * 60 * 24)) / (60 * 60));
-            minutes = Math.floor((total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
-            secondes = Math.floor(total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
-            var et = "et";
-            var mot_jour = "jours,";
-            var mot_heure = "heures,";
-            var mot_minute = "minutes,";
-            var mot_seconde = "secondes";
-            
-            if (jours == 0)
-            {
-            jours = '';
-            mot_jour = '';
-            }
-            else if (jours == 1)
-            {
-            mot_jour = "jour,";
-            }
-            if (heures == 0)
-            {
-            heures = '';
-            mot_heure = '';
-            }
-            else if (heures == 1)
-            {
-            mot_heure = "heure,";
-            }
-            if (minutes == 0)
-            {
-            minutes = '';
-            mot_minute = '';
-            }
-            else if (minutes == 1)
-            {
-            mot_minute = "minute,";
-            }
-            if (secondes == 0)
-            {
-            secondes = '';
-            mot_seconde = '';
-            et = '';
-            }
-            else if (secondes == 1)
-            {
-            mot_seconde = "seconde";
-            }
-            if (minutes == 0 && heures == 0 && jours == 0)
-            {
-            et = "";
-            }
-            
-            compte_a_rebours.innerHTML = prefixe +' <font color="blue"><b> '+ jours + '</font> ' + mot_jour + ' </b><font color="blue"><b> ' + heures + ' </u></font> ' + mot_heure + ' <font color="blue"><b> ' + minutes + ' </u></font> ' + mot_minute + ' ' + et + ' <font color="blue"><b>  ' + secondes + '</font></b> ' + mot_seconde+' </b>';
-            }
-            else
-            {
-            compte_a_rebours.innerHTML = '<font color="green">!! ATTENTION !! L\'introduction de Sujet pour l\'année académique 2022-2023 est terminée.</font>';
-            }
-            var actualisation = setTimeout("compte_a_rebours();", 1000);
-            }
-            compte_a_rebours();
-            </script>			
-            
-            
+    <?php if($connect):?>
+        <div class="container-fluid cadre-principal"> 
+            <div class="container"> 
+                <section class="blog">
+                    <div class="container">
+                        <div class="row">	
+                            <div id="compte_a_rebours" class="alert alert-info alert-dismissible"><noscript>ISIG-GOMA :: Compte à rebours d'introduction de sujet.</noscript></div>
+                                <script type="text/javascript">
+                                    function compte_a_rebours()
+                                    {
+                                        var compte_a_rebours = document.getElementById("compte_a_rebours");
+                                        
+                                        var date_actuelle = new Date();
+                                        var date_evenement = new Date("2023-08-05");
+                                        var total_secondes = (date_evenement - date_actuelle) / 1000;
+                                        
+                                        var prefixe = "<font color='green'>!! ATTENTION !! L'introduction de sujet pour l'année académique 2022-2023 prendra fin dans ";
+                                        
+                                        if (total_secondes < 0)
+                                        {
+                                            prefixe = "<font color='red'>!! ATTENTION !! L'introduction de sujet pour l'année académique 2022-2023 s'est terminé il y a </font>"; // On modifie le préfixe si la différence est négatif
+                                            total_secondes = Math.abs(total_secondes); // On ne garde que la valeur absolue
+                                        }
+                                        if (total_secondes > 0)
+                                        {
+                                            var jours = Math.floor(total_secondes / (60 * 60 * 24));
+                                            var heures = Math.floor((total_secondes - (jours * 60 * 60 * 24)) / (60 * 60));
+                                            minutes = Math.floor((total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+                                            secondes = Math.floor(total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+                                            var et = "et";
+                                            var mot_jour = "jours,";
+                                            var mot_heure = "heures,";
+                                            var mot_minute = "minutes,";
+                                            var mot_seconde = "secondes";
+                                        
+                                            if (jours == 0)
+                                            {
+                                                jours = '';
+                                                mot_jour = '';
+                                            }
+                                            else if (jours == 1)
+                                            {
+                                            mot_jour = "jour,";
+                                            }
+                                            if (heures == 0)
+                                            {
+                                                heures = '';
+                                                mot_heure = '';
+                                            }
+                                            else if (heures == 1)
+                                            {
+                                                mot_heure = "heure,";
+                                            }
+                                            if (minutes == 0)
+                                            {
+                                                minutes = '';
+                                                mot_minute = '';
+                                            }
+                                            else if (minutes == 1)
+                                            {
+                                                mot_minute = "minute,";
+                                            }
+                                            if (secondes == 0)
+                                            {
+                                            secondes = '';
+                                            mot_seconde = '';
+                                            et = '';
+                                            }
+                                            else if (secondes == 1)
+                                            {
+                                            mot_seconde = "seconde";
+                                            }
+                                            if (minutes == 0 && heures == 0 && jours == 0)
+                                            {
+                                            et = "";
+                                            }
+                                            
+                                            compte_a_rebours.innerHTML = prefixe +' <font color="blue"><b> '+ jours + '</font> ' + mot_jour + ' </b><font color="blue"><b> ' + heures + ' </u></font> ' + mot_heure + ' <font color="blue"><b> ' + minutes + ' </u></font> ' + mot_minute + ' ' + et + ' <font color="blue"><b>  ' + secondes + '</font></b> ' + mot_seconde+' </b>';
+                                            }
+                                            else
+                                            {
+                                            compte_a_rebours.innerHTML = '<font color="green">!! ATTENTION !! L\'introduction de Sujet pour l\'année académique 2022-2023 est terminée.</font>';
+                                            }
+                                            var actualisation = setTimeout("compte_a_rebours();", 1000);
+                                            }
+                                        compte_a_rebours();
+                                </script>		
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+            <div class = "col-xs-12 col-sm-12 text-right">
+                <ol class = "breadcrumb">
                 
-            <table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">
-                                <thead>
-                                    <tr>
-                                        <!--<th>Action</th>-->
-                                        <th>#</th>
-                                        <th style="width:200px;">Noms</th>
-                                        <th style="width:80px;">Promotion</th>
-                                        <th style="width:80px;">AC</th>
-                                        <th>Sujet</th>
-                                        <!--<th>Date</th>-->
-                                    </tr>
-                                </thead>
-                            </table>
+                        <li><a href="ficheSuject.php" class="btn btn-danger">Déposer un sujet</a></li>
+                        <li><a href="back/logout.php">logout</a></li>
+                        
+                </ol>
+            </div> 
+             <?php endif?>
+            
+            <div class= "breadcrumb">
+                <form  method="post">
+                    <input type="text" name="mot_cle" placeholder="Mot clé">
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
+           
+            <?php
+            
+             require 'back/config.php';
+           
+            
+                $sql = 'SELECT e.intitule,  e.annAcad, s.nom, s.postnom, s.prenom
+                FROM suject e
+                JOIN etudiant s ON e.matricule = s.matricule';
+                $result = mysqli_query($conn,$sql);
+
+
+         
+                if (isset($_POST['mot_cle'])){
+                    
+                    $mot_cle = $_POST['mot_cle'];
+
+                    
+
+                    // Exécution de la requête SQL
+                    $sql = 'SELECT e.idSuject, e.intitule, e.annAcad, s.nom, s.postnom, s.prenom,s.matricule
+                    FROM suject e
+                    JOIN etudiant s ON e.matricule = s.matricule
+                    WHERE e.intitule LIKE "%' . $mot_cle . '%"';
+                    $result = $conn->query($sql);
+                }
+        
+
+                // Parcours des résultats de la requête
+                $sujects = [];
+                
+                while ($row = $result->fetch_assoc()) {
+                    $sujects[] = $row;
+                }
+
+                
+                echo '<table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">';
+                echo '<tr>';
+                foreach ($sujects[0] as $key => $value) {
+                    echo '<th>' . $key . '</th>';
+                }
+                echo '</tr>';
+                foreach ($sujects as $suject) {
+                    echo '<tr>';
+                    foreach ($suject as $key => $value) {
+                        echo '<td>' . $value . '</td>';
+                    }
+                    echo '</tr>';
+                }
+                echo '</table>';
+
+                // Fermeture de la connexion à la base de données
+                $conn->close();
+
+            ?>
+                            
+           
             <script type="text/javascript" language="javascript" >
             $(document).ready(function(){
                 $('#add_button').click(function(){
