@@ -5,55 +5,53 @@ if(isset($_POST["pseudo"])&& isset($_POST["password"])){
 $pseudo = $_POST["pseudo"];
 $password = $_POST["password"];
 if(filter_var($pseudo, FILTER_VALIDATE_EMAIL)){
-    $query="SELECT admin.email,admin.password FROM admin WHERE email='$pseudo' AND password='$password'";
-    $result = mysqli_query($conn, $query);
-    if ($result->num_rows == 1) {
+    $query="SELECT admin.email,admin.password FROM admin WHERE email=:pseudo AND password=:password";
+    $stmt=$pdo->prepare($query);
+    $stmt->execute(["pseudo"=>$pseudo,"password"=>$password]);
+    $user=$stmt->fetch();
+    if(!$user){
 
         // Admin authentifié
-        $row = $result->fetch_assoc();
-        $email = $row["email"];
-
-        
+        $email = $user[0]["email"];
 
         // Enregistrement de la session
         if(session_status() == PHP_SESSION_NONE) session_start();
         $_SESSION["email"] = $email;
 
-        // Redirection vers la page d'accueil
-        header("Location: ../gestion-tfc.php");
+            // Redirection vers la page d'accueil
+            header("Location: ../gestion-tfc.php");
 
-    } else {
+         } else {
 
-        // Admin non authentifié
-        header("Location: ../login.html");
+            // Admin non authentifié
+            header("Location: ../login.html");
 
-    }
-}else{
+        }
+    }else{
     
-    $query = "SELECT etudiant.matricule,nom,postnom,prenom FROM compte INNER JOIN etudiant ON compte.matricule=etudiant.matricule WHERE pseudo = '$pseudo' AND psw = '$password'";
-    $result = mysqli_query($conn, $query);
+        $query = "SELECT etudiant.matricule,nom,postnom,prenom FROM compte INNER JOIN etudiant ON compte.matricule=etudiant.matricule WHERE pseudo = :pseudo AND psw = :password";
+        $stmt=$pdo->prepare($query);
+        $stmt->execute(['pseudo'=>$pseudo,'password'=>$password]);
+        $user=$stmt->fetch();
 
-    if ($result->num_rows == 1) {
+        if (!empty($user)) {
 
-        // Étudiant authentifié
-        $row = $result->fetch_assoc();
-        $matricule = $row["matricule"];
+            // Étudiant authentifié
+            $matricule = $user["matricule"];
 
-        
+            // Enregistrement de la session
+            if(session_status() == PHP_SESSION_NONE) session_start();
+            $_SESSION["matricule"] = $matricule;
 
-        // Enregistrement de la session
-        if(session_status() == PHP_SESSION_NONE) session_start();
-        $_SESSION["matricule"] = $matricule;
+            // Redirection vers la page d'accueil
+            header("Location: ../gestion-tfc.php");
 
-        // Redirection vers la page d'accueil
-        header("Location: ../gestion-tfc.php");
+        } else {
 
-    } else {
+            // Étudiant non authentifié
+            header("Location: ../login.html");
 
-        // Étudiant non authentifié
-        header("Location: ../login.html");
-
-    }
+        }
 }
 
 }

@@ -2,7 +2,9 @@
     require 'back/config.php';
     if(session_status() == PHP_SESSION_NONE) session_start();
     $connect= isset($_SESSION["matricule"]);
+    $isAdmin=isset($_SESSION['email']);
     $matricule=$_SESSION["matricule"] ?? null;
+
 
 ?>
 <!DOCTYPE html> 
@@ -259,7 +261,12 @@
                             if ($suject['matricule']==$matricule){
                                 $idSuject=$suject['idSuject'];
                                 echo '<a href="back/delete.php?idSuject='.$idSuject.'"><img src="assets/img/poubelle.png" alt="delete" style="width: 30px;"></a>';
+                                echo '<a href="back/modifieSuject.php?idSuject='.$idSuject.'"><img src="assets/img/modifier.png" alt="delete" style="width: 20px;"></a>';
                             }
+                        }
+                        if ($isAdmin){
+                            echo '<a href="back/delete.php?idSuject='.$idSuject.'"><img src="assets/img/poubelle.png" alt="delete" style="width: 30px;"></a>';
+                            echo '<a href="back/modifieSuject.php?idSuject='.$idSuject.'"><img src="assets/img/modifier.png" alt="delete" style="width: 20px;"></a>';
                         }
                         echo "</td>";
                     echo '</tr>';
@@ -357,7 +364,7 @@
                     </p> 
                 </div> 
             </div> 
-        </div> 
+        </div>
         <div class="container" id="bloc-copyright"> 
             <div class="row"> 
                 <div class="col-xs-12"> Copyright &copy; ESISALAMA 2023 </div> 
@@ -375,5 +382,5 @@
     <script src="assets/js/apropos.js" type="text/javascript"></script> 
     <script src="assets/js/calendrier.js" type="text/javascript"></script> 
     <script src="assets/js/horaire.js" type="text/javascript"></script> <!-- to delete --> <!-- Ferméture Body & html --> 
-</body> 
+</body>
 </html>
