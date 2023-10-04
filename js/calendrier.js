@@ -146,3 +146,9 @@ $(function () {
         }
     })();
 });
+
+$(document).ready(function() {
+    // Ouvre le pop up
+    $('#myModal').modal('show');
+  });
+  
