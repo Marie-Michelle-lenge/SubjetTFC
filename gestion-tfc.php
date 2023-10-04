@@ -2,6 +2,8 @@
     require 'back/config.php';
     if(session_status() == PHP_SESSION_NONE) session_start();
     $connect= isset($_SESSION["matricule"]);
+    $matricule=$_SESSION["matricule"] ?? null;
+
 ?>
 <!DOCTYPE html> 
 <html> 
@@ -206,7 +208,7 @@
             </div> 
              <?php endif?>
             
-            <div class= "breadcrumb">
+            <div class= "breadcrumb" style="margin-top: 70px ">
                 <form  method="post">
                     <input type="text" name="mot_cle" placeholder="Mot clé">
                     <input type="submit" value="Rechercher">
@@ -218,10 +220,11 @@
              require 'back/config.php';
            
             
-                $sql = 'SELECT e.intitule,  e.annAcad, s.nom, s.postnom, s.prenom
+                $sql = 'SELECT e.idSuject,e.intitule,  e.annAcad, s.matricule,s.nom, s.postnom, s.prenom
                 FROM suject e
                 JOIN etudiant s ON e.matricule = s.matricule';
-                $result = mysqli_query($conn,$sql);
+                $result = $pdo->query($sql);
+                $results=$result->fetchAll();
 
 
          
@@ -235,40 +238,38 @@
                     $sql = 'SELECT e.idSuject, e.intitule, e.annAcad, s.nom, s.postnom, s.prenom,s.matricule
                     FROM suject e
                     JOIN etudiant s ON e.matricule = s.matricule
-                    WHERE e.intitule LIKE "%' . $mot_cle . '%"';
-                    $result = $conn->query($sql);
+                    WHERE e.intitule LIKE  :mot_cle';
+                    $stmt=$pdo->prepare($sql);
+                    $stmt->execute(["mot_cle"=>'%'.$mot_cle.'%']);
+                    $results=$stmt->fetchAll();
                 }
         
 
-                // Parcours des résultats de la requête
-                $sujects = [];
-                
-                while ($row = $result->fetch_assoc()) {
-                    $sujects[] = $row;
-                }
-
-                
                 echo '<table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">';
-                echo '<tr>';
-                foreach ($sujects[0] as $key => $value) {
-                    echo '<th>' . $key . '</th>';
-                }
-                echo '</tr>';
-                foreach ($sujects as $suject) {
-                    echo '<tr>';
-                    foreach ($suject as $key => $value) {
-                        echo '<td>' . $value . '</td>';
-                    }
-                    echo '</tr>';
-                }
-                echo '</table>';
+                echo "<tr><th>intitule</th><th>annAcad</th><th>nom</th><th>postnom</th><th>prenom</th></tr>";
 
+                foreach ($results as $suject) {
+                    echo '<tr>';
+                        echo '<td>' . $suject['intitule'] . '</td>';
+                        echo '<td>' . $suject['annAcad'] . '</td>';
+                        echo '<td>' . $suject['nom'] . '</td>';
+                        echo '<td>' . $suject['postnom'] . '</td>';
+                        echo '<td>' . $suject['prenom'];
+                        if ($connect){
+                            if ($suject['matricule']==$matricule){
+                                $idSuject=$suject['idSuject'];
+                                echo '<a href="back/delete.php?idSuject='.$idSuject.'"><img src="assets/img/poubelle.png" alt="delete" style="width: 30px;"></a>';
+                            }
+                        }
+                        echo "</td>";
+                    echo '</tr>';
+                    }
+                echo '</table>';
                 // Fermeture de la connexion à la base de données
                 $conn->close();
 
             ?>
-                            
-           
+
             <script type="text/javascript" language="javascript" >
             $(document).ready(function(){
                 $('#add_button').click(function(){
