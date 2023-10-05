@@ -8,7 +8,7 @@
         <link href="assets/css/esisalama.min.css" rel="stylesheet" type="text/css" /> 
         <link href="assets/img/favicon.png" rel="icon" type="image/png" /> 
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" /><![endif]--> 
-    </head>
+    </head> 
     <body> <!-- Barre de navigation/menu --> 
         <nav class="navbar navbar-inverse navbar-fixed-top"> 
             <div class="container"> <!-- Logo et bouton toggle --> 
@@ -30,7 +30,7 @@
                     <ul class="nav navbar-nav navbar-right"> 
                         <li role="presentation" class=""> 
                             <a href="index.php" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
-                        </li> 
+                        </li>
                         <li class="dropdown active" role="presentation"> 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> 
                                 <span class="glyphicon glyphicon-book"></span> Education <span class="caret"></span> 
@@ -60,48 +60,48 @@
                             </a> 
                             <ul class="dropdown-menu" id="menu-a-propos"> 
                                 <li><a href="presentation.html">Présentation</a></li> 
-                                <li><a href="cursus.html">Cursus</a></li> 
-                                <li><a href="admin.html">Admission</a></li> 
-                                <li><a href="contact.html">Nous contacter</a></li> 
+                                    <li><a href="cursus.html">Cursus</a></li> 
+                                    <li><a href="admin.html">Admission</a></li> 
+                                    <li><a href="contact.html">Nous contacter</a></li>
                             </ul> 
                         </li> 
                     </ul> 
                 </div> <!--/.collapse--> 
             </div> <!--/.container--> 
         </nav> <!-- Facebook Pixel Code --> 
-        
+        <script> 
+        !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];
+        t=b.createElement(e);
+        t.async=!0; 
+        t.src=v;s=b.getElementsByTagName(e)[0]; 
+        s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); 
+        fbq('init', '619752102038038'); 
+        fbq('track', 'PageView'); 
+        </script> 
+        <noscript>
+            <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=619752102038038&ev=PageView&noscript=1" />
+        </noscript> 
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
-    <div class = "container-fluid titre-page titre-fixe-on"> 
-        <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-            <h1> <span class = "glyphicon glyphicon-list-alt"></span> Depot de TFC </h1> 
-        </div> 
+        <div class = "container-fluid titre-page titre-fixe-on"> 
+            <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Horaire des cours </h1> 
+            </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.html">Accueil</a></li>
-                    <li> Sujet </li>
+                    <li><a href = "index.php">Accueil</a></li>
+                    <li>Espace Etudiant</li>
                 </ol>
             </div> 
         </div> 
     </div> 
-    <!-- body --> 
-
-    <div style="display:flex;"class="container-fluid cadre-principal"> 
-        <div class="col-xs-12 col-md-4"> 
-            <div class="thumbnail" id="card-master"> 
-                <a href="toutSujet.html"> 
-                    <h2>Tout le sujet</h2>
-                </a> 
-            </div> 
-        </div>
-        <div class="col-xs-12 col-md-4"> 
-            <div class="thumbnail" id="card-master"> 
-                <a href="espaceEtudiant.html"> 
-                    <h2>Espace Etudiant</h2>
-                </a> 
-            </div> 
-        </div>  
-    </div>
-    <!-- Pied de page --> 
+    <div class="container-fluid cadre-principal"> 
+        <div class="container"> 
+            <div class="row" id="cards-horaire"> 
+               <!-- mettre tableau de sujet --> 
+               <h1> Mettre tableau de tout le sujet</h1>
+        </div> 
+    </div><!-- Pied de page --> 
     <footer> 
         <div class="container-fluid"> 
             <div class="row" id="bloc-info-plus"> 

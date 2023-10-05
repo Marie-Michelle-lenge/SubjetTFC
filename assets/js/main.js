@@ -19,6 +19,13 @@
       return document.querySelector(el)
     }
   }
+  /**
+   * animation formulaire
+   */
+  document.addEventListener("DOMContentLoaded", function() {
+    var card = document.querySelector(".card");
+    card.classList.add("animate");
+  });
 
   /**
    * Easy event listener function
