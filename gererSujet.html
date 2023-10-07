@@ -29,7 +29,7 @@
                     <p class="navbar-left visible-sm visible-md titre-site"> E.S.I.S. </p> 
                     <ul class="nav navbar-nav navbar-right"> 
                         <li role="presentation" class=""> 
-                            <a href="index.html" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
+                            <a href="index.php" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
                         </li>
                         <li class="dropdown active" role="presentation"> 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> 
@@ -69,62 +69,43 @@
                 </div> <!--/.collapse--> 
             </div> <!--/.container--> 
         </nav> <!-- Facebook Pixel Code --> 
-       
+        
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
         <div class = "container-fluid titre-page titre-fixe-on"> 
             <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant </h1> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Gestion sujet </h1> 
             </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.php">Accueil</a></li>
-                    <li>Espace Etudiant</li>
+                    <li><a href = "index.html">Accueil</a></li>
+                    <li>sujet</li>
                 </ol>
             </div> 
         </div> 
     </div> 
     <div class="container-fluid cadre-principal"> 
-        <div class="container"> 
-            <div class="row justify-content-md-center">
-                <div style="display: flex; justify-content: center; align-items: center; height: 50vh;" >
-                    <form class="mt-3" action="#" method="post" id="login">
-                        <input id="anchor" type="hidden" name="anchor" value="">
-                        <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
-                        <div class="form-group">
-                            <label for="username" class="sr-only">
-                                    Nom d'utilisateur/adresse de courriel
-                            </label>
-                            <input type="text" name="username" id="username"
-                                class="form-control"
-                                value=""
-                                placeholder="Nom d'utilisateur/adresse de courriel">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="sr-only">Mot de passe</label>
-                            <input type="password" name="password" id="password" value=""
-                                class="form-control"
-                                placeholder="Mot de passe">
-                        </div>
-                        <div class="col-md-5">
-                            <div class="forgetpass mt-4">
-                                <p><a href="#">Vous avez oublié votre nom d'utilisateur et/ou votre mot de passe ?</a></p>
-                            </div>   
-                        </div>
-                            <div class="rememberpass mt-3">
-                                <input type="checkbox" name="rememberusername" id="rememberusername" value="1"  />
-                                <label for="rememberusername">Se souvenir du nom d'utilisateur</label>
-                            </div>
+        <div style="padding: 10px;"> 
+            <a href="#" class="btn btn-primary" role="button">Ajouter sujet</a> 
+        </div>
 
-                        <button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Connexion</button>
-                    </form>
-                    
-                </div>
+        <div style="padding: 10px;"> 
+            <a href="#" class="btn btn-primary" role="button">Ajouter directeur</a> 
+        </div>
 
-                
-            </div> 
-    </div>
-    </div>
-    <!-- Pied de page --> 
+        <div style="padding: 10px;"> 
+            <a href="#" class="btn btn-primary" role="button">Ajouter Etudiant</a> 
+        </div>
+
+        <div style="padding: 10px;"> 
+            <a href="#" class="btn btn-primary" role="button">supprimer sujet</a> 
+        </div>
+
+        <div style="padding: 10px;"> 
+            <a href="#" class="btn btn-primary" role="button">modifier sujet</a> 
+        </div>
+        
+    </div> 
+    </div><!-- Pied de page --> 
     <footer> 
         <div class="container-fluid"> 
             <div class="row" id="bloc-info-plus"> 
