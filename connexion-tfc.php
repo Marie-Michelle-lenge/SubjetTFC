@@ -87,14 +87,14 @@
         <div class="container"> 
             <div class="row justify-content-md-center">
                 <div style="display: flex; justify-content: center; align-items: center; height: 50vh;" >
-                    <form class="mt-3" action="#" method="post" id="login">
+                    <form class="mt-3" action="back/login.php" method="post" id="login">
                         <input id="anchor" type="hidden" name="anchor" value="">
                         <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
                         <div class="form-group">
                             <label for="username" class="sr-only">
                                     Pseudo
                             </label>
-                            <input type="text" name="username" id="username"
+                            <input type="text" name="pseudo" id="username"
                                 class="form-control"
                                 value=""
                                 placeholder="Pseudo">

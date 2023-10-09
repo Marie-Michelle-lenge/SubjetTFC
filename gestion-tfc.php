@@ -8,7 +8,7 @@
         <link href="assets/css/esisalama.min.css" rel="stylesheet" type="text/css" /> 
         <link href="assets/img/favicon.png" rel="icon" type="image/png" /> 
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" /><![endif]--> 
-    </head> 
+    </head>
     <body> <!-- Barre de navigation/menu --> 
         <nav class="navbar navbar-inverse navbar-fixed-top"> 
             <div class="container"> <!-- Logo et bouton toggle --> 
@@ -29,8 +29,8 @@
                     <p class="navbar-left visible-sm visible-md titre-site"> E.S.I.S. </p> 
                     <ul class="nav navbar-nav navbar-right"> 
                         <li role="presentation" class=""> 
-                            <a href="index.php" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
-                        </li>
+                            <a href="index.html" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
+                        </li> 
                         <li class="dropdown active" role="presentation"> 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> 
                                 <span class="glyphicon glyphicon-book"></span> Education <span class="caret"></span> 
@@ -38,7 +38,7 @@
                             <ul class="dropdown-menu"> 
                                 <!--<li><a href="index.php?module=calendrier">Calendrier académique</a></li>--> 
                                 <li><a href="horaire.html">Horaire des cours</a></li> 
-                                <li><a href="gestion-tfc.html">TFC</a></li>
+                                <li><a href="gestion-tfc.php">TFC</a></li>
                                 <!--<li><a href="index.php?module=apropos&amp;onglet=cursus#filieres">Filières</a></li>--> 
                                 <li><a href="centred'excellence.html">Centre d'Excellence</a></li> 
                                 <li><a href="bibliotheque.html">Bibliothèque</a></li> 
@@ -60,48 +60,61 @@
                             </a> 
                             <ul class="dropdown-menu" id="menu-a-propos"> 
                                 <li><a href="presentation.html">Présentation</a></li> 
-                                    <li><a href="cursus.html">Cursus</a></li> 
-                                    <li><a href="admin.html">Admission</a></li> 
-                                    <li><a href="contact.html">Nous contacter</a></li>
+                                <li><a href="cursus.html">Cursus</a></li> 
+                                <li><a href="admin.html">Admission</a></li> 
+                                <li><a href="contact.html">Nous contacter</a></li> 
                             </ul> 
                         </li> 
                     </ul> 
                 </div> <!--/.collapse--> 
             </div> <!--/.container--> 
         </nav> <!-- Facebook Pixel Code --> 
-        <script> 
-        !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];
-        t=b.createElement(e);
-        t.async=!0; 
-        t.src=v;s=b.getElementsByTagName(e)[0]; 
-        s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); 
-        fbq('init', '619752102038038'); 
-        fbq('track', 'PageView'); 
-        </script> 
-        <noscript>
-            <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=619752102038038&ev=PageView&noscript=1" />
-        </noscript> 
+        
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
-        <div class = "container-fluid titre-page titre-fixe-on"> 
-            <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant </h1> 
-            </div> 
+    <div class = "container-fluid titre-page titre-fixe-on"> 
+        <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
+            <h1> <span class = "glyphicon glyphicon-list-alt"></span> Depot de TFC </h1> 
+        </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.php">Accueil</a></li>
-                    <li>Espace Etudiant</li>
+                    <li><a href = "index.html">Accueil</a></li>
+                    <li> <a href = "connexion-tfc.php">connexion</a> </li>
                 </ol>
             </div> 
         </div> 
     </div> 
-    <div class="container-fluid cadre-principal"> 
-        <div class="container"> 
-            <div class="row" id="cards-horaire"> 
-               <!-- mettre tableau de sujet --> 
-               <h1> Mettre tableau de tout le sujet</h1>
+    <!-- body --> 
+    
+
+    <div style="display:flex;"class="container-fluid cadre-principal">
+         
+        <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
+            <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
+                <a href="toutSujet.html">
+                    <br> 
+                    <h2><span class = "glyphicon glyphicon-list-alt"></span> Tout le sujet</h2>
+                    <br>
+                    <br>
+                </a> 
+            </div>
+            <div  style="background-color: rgba(230,126,34,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master" > 
+                <a href="espaceEtudiant.html">
+                    
+                    <br> 
+                    <h2>  <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant</h2>
+                    <br>
+                    <br>
+                </a> 
+            </div> 
         </div> 
-    </div><!-- Pied de page --> 
+        <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
+            <input type="text" class="form-control" placeholder="Recherche">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+          </div> 
+    </div>
+    <!-- Pied de page --> 
     <footer> 
         <div class="container-fluid"> 
             <div class="row" id="bloc-info-plus"> 
