@@ -103,32 +103,33 @@
     </div> 
 
     <?php if($connect):?>
+        
         <div style="display:flex;"class="container-fluid cadre-principal">
          
          <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
              <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
                  <a href="addEtudiant.html">
-                     <br> 
+                    
                      <h2><span class = "glyphicon glyphicon-list-alt"></span> Ajouter Etudiant</h2>
-                     <br>
                      
                  </a> 
              </div>
              <div  style="background-color: rgba(230,126,34,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master" > 
-                 <a href="espaceEtudiant.html">
+                 <a href="addDirecteur.html">
                      
-                     <br> 
+                    
                      <h2>  <span class = "glyphicon glyphicon-list-alt"></span> ajouter directeur</h2>
-                     <br>
+                    
                      
                  </a> 
              </div> 
          </div> 
          <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
-             <input type="text" class="form-control" placeholder="Recherche">
-             <div class="input-group-append">
-               <span class="input-group-text"><i class="fa fa-search"></i></span>
-             </div>
+         <div class = "col-xs-12 col-sm-6 text-right">
+                <ol class = "breadcrumb">
+                    <li><a href = "back/logout.php">Deconnexion</a></li>
+                </ol>
+            </div> 
            </div> 
      </div>
      <?php endif?>
