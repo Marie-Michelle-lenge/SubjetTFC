@@ -29,7 +29,7 @@
                     <p class="navbar-left visible-sm visible-md titre-site"> E.S.I.S. </p> 
                     <ul class="nav navbar-nav navbar-right"> 
                         <li role="presentation" class=""> 
-                            <a href="index.php" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
+                            <a href="index.html" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
                         </li>
                         <li class="dropdown active" role="presentation"> 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> 
@@ -73,12 +73,12 @@
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
         <div class = "container-fluid titre-page titre-fixe-on"> 
             <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-                <h1> <span class = "glyphicon glyphicon-list-alt"></span> admin connexion </h1> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Connexion Admin </h1> 
             </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.php">Accueil</a></li>
-                    <li>connexion</li>
+                    <li><a href = "gestion-tfc.php">Accueil</a></li>
+                    <li>Connexion Admin</li>
                 </ol>
             </div> 
         </div> 
@@ -87,33 +87,30 @@
         <div class="container"> 
             <div class="row justify-content-md-center">
                 <div style="display: flex; justify-content: center; align-items: center; height: 50vh;" >
+                    <div class="card">
+                        <div class="card-block">
+                                <h2 class="card-header text-center" >
+                                  <img src="https://www.esisalama.net/elearning/pluginfile.php/1/core_admin/logo/0x200/1632863867/logo.png" title="ESIS Enseignement en ligne" alt="ESIS Enseignement en ligne"/>
+                                </h2>
                     <form class="mt-3" action="back/login.php" method="post" id="login">
                         <input id="anchor" type="hidden" name="anchor" value="">
                         <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
                         <div class="form-group">
                             <label for="username" class="sr-only">
-                                    Pseudo
+                                Pseudo
                             </label>
-                            <input type="text" name="pseudo" id="username"
+                            <input style="width: 80vh; text-align: center;"  type="text" name="matricule" id="matricule"
                                 class="form-control"
                                 value=""
                                 placeholder="Pseudo">
                         </div>
                         <div class="form-group">
                             <label for="password" class="sr-only">Mot de passe</label>
-                            <input type="password" name="password" id="password" value=""
+                            <input style="width: 80vh; text-align: center;" type="password" name="motdepasse" id="motdepasse" value=""
                                 class="form-control"
                                 placeholder="Mot de passe">
                         </div>
-                        <div class="col-md-5">
-                            <div class="forgetpass mt-4">
-                                <p><a href="#">Vous avez oublié votre nom d'utilisateur et/ou votre mot de passe ?</a></p>
-                            </div>   
-                        </div>
-                            <div class="rememberpass mt-3">
-                                <input type="checkbox" name="rememberusername" id="rememberusername" value="1"  />
-                                <label for="rememberusername">Se souvenir du nom d'utilisateur</label>
-                            </div>
+                        
 
                         <button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Connexion</button>
                     </form>
@@ -121,9 +118,15 @@
                 </div>
 
                 
+            </div>
+                </div>
             </div> 
+            <br>
+            <br>
     </div>
     </div>
+    <br>
+    <br>
     <!-- Pied de page --> 
     <footer> 
         <div class="container-fluid"> 

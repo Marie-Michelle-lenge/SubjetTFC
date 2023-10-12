@@ -76,19 +76,7 @@
                 </div> <!--/.collapse--> 
             </div> <!--/.container--> 
         </nav> <!-- Facebook Pixel Code --> 
-        <script> 
-        !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];
-        t=b.createElement(e);
-        t.async=!0; 
-        t.src=v;s=b.getElementsByTagName(e)[0]; 
-        s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); 
-        fbq('init', '619752102038038'); 
-        fbq('track', 'PageView'); 
-        </script> 
-        <noscript>
-            <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=619752102038038&ev=PageView&noscript=1" />
-        </noscript> 
+         
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
         <div class = "container-fluid titre-page titre-fixe-on"> 
             <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
@@ -96,13 +84,13 @@
             </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.php">Accueil</a></li>
+                    <li><a href = "index.html">Accueil</a></li>
                     <li>Espace Etudiant</li>
                 </ol>
             </div> 
         </div> 
     </div> 
-
+    
     <?php if($connect):?>
         
         <div style="display:flex;"class="container-fluid cadre-principal">
@@ -133,11 +121,21 @@
             </div> 
            </div> 
      </div>
+     
      <?php endif?>
+     <form  action="toutSujet.php">
+        <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 90px; margin:none;">
+            <input type="text" class="form-control"  name="mot_cle" placeholder="Recherche">
+            <div class="input-group-append">
+              <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+          </div> 
+    </div>
+    </form>
      <?php if($connectEtudiant):?>
-        <div style="display:flex;"class="container-fluid cadre-principal">
-         
-         <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
+
+    <div style="display:flex;" class="container-fluid ">
+         <div class="col-xs-12 col-md-8" style=" height: 100%; "> 
              <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
                  <a href="depotSuject.html">
                     
@@ -145,15 +143,16 @@
                      
                  </a> 
              </div> 
-         </div> 
-         <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
+         </div>
+    <div class="input-group mb-5" style="width: 700px; margin-left: 80vh;">
          <div class = "col-xs-12 col-sm-6 text-right">
-                <ol class = "breadcrumb">
-                    <li><a href = "back/logout.php">Deconnexion</a></li>
-                </ol>
-            </div> 
-           </div> 
-     </div>
+            <ol class = "breadcrumb">
+                <li><a href = "back/logout.php">Deconnexion</a></li>
+            </ol>
+        </div> 
+    </div> 
+    </div>
+
      <?php endif?>
 
 
@@ -165,8 +164,18 @@
            
                $sql = "SELECT e.intitule,  e.annAcad, s.nom, s.postnom, s.prenom
                FROM suject e
-               JOIN etudiant s ON e.matricule = s.matricule where etatArt='VALIDE'";
+               JOIN etudiant s ON e.matricule = s.matricule ";
                $result = mysqli_query($conn,$sql);
+
+                if(isset($_POST['mot_cle'])){
+                    $mot_cle=$_POST['mot_cle'];
+                    $sql='SELECT e.idsuject,e.intitule,s.nom,s.postno,s.prenom,s.mqtricule
+                    FROM suject e
+                    JOIN etudiant s ON e.matricule = s.matricule
+                    WHERE e.intitule LIKE "%' .$mot_cle . '%"';
+                    $result=$conn->query($sql);
+                }
+
                // Parcours des résultats de la requête
                $sujects = [];
                
@@ -176,23 +185,25 @@
 
                
               if (!empty($sujects)) {
-    echo '<table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">';
-    echo '<tr>';
-    foreach ($sujects[0] as $key => $value) {
-        echo '<th>' . $key . '</th>';
-    }
-    echo '</tr>';
-    foreach ($sujects as $suject) {
-        echo '<tr>';
-        foreach ($suject as $key => $value) {
-            echo '<td>' . $value . '</td>';
-        }
-        echo '</tr>';
-    }
-    echo '</table>';
-} else {
-    echo 'Aucun sujet trouvé.';
-}
+                echo '<div class="container-fluid cadre-principal">';
+                echo '<table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">';
+                echo '<tr>';
+                foreach ($sujects[0] as $key => $value) {
+                    echo '<th>' . $key . '</th>';
+                }
+                echo '</tr>';
+                foreach ($sujects as $suject) {
+                    echo '<tr>';
+                    foreach ($suject as $key => $value) {
+                        echo '<td>' . $value . '</td>';
+                    }
+                    echo '</tr>';
+                }
+                echo '</table>';
+            } else {
+                echo 'Aucun sujet trouvé.';
+            }
+            echo'</div>';
 
 
                // Fermeture de la connexion à la base de données

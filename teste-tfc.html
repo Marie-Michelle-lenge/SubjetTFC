@@ -1,31 +1,520 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Pop-up avec Bootstrap</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha3/css/bootstrap.min.css">
-</head>
-<body>
-  <button onclick="openModal()">Ouvrir le pop-up</button>
-
-  <div class="modal" id="myModal">
-    <div class="modal-content">
-      <h1>Titre du pop-up</h1>
-      <p>Contenu du pop-up</p>
-      <button onclick="closeModal()">Fermer le pop-up</button>
-    </div>
+<div class="row justify-content-center">
+  <div class="col-xl-6 col-sm-11 push-sm-1">
+  <div class="card">
+      <div class="card-block">
+              <h2 class="card-header text-center" >
+                <img src="https://www.esisalama.net/elearning/pluginfile.php/1/core_admin/logo/0x200/1632863867/logo.png" title="ESIS Enseignement en ligne" alt="ESIS Enseignement en ligne"/></h2>
+          <div class="card-body">
+  
+  
+              <div class="row justify-content-md-center">
+                  <div class="col-md-5">
+                      <form class="mt-3" action="back/depotSuject.php" method="post" id="login">
+                          <input id="anchor" type="hidden" name="anchor" value="">
+                          <script>document.getElementById('anchor').value = location.hash;</script>
+                          <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
+                          <div class="form-group">
+                              <label for="username" class="sr-only">
+                                      intitule du Suject
+                              </label>
+                              <input type="text" name="intitule" id="username"
+                                  class="form-control"
+                                  value=""
+                                  placeholder="intiltule du suject">
+                          </div>
+  
+                          <div class="form-group">
+                              <label for="username" class="sr-only">
+                                      theme
+                              </label>
+                              <input type="text" name="theme" id="username"
+                                  class="form-control"
+                                  value=""
+                                  placeholder="Theme">
+                          </div>
+  
+                          <div class="form-group">
+                              <label for="username" class="sr-only">
+                                      problematique
+                              </label>
+                              <input type="text" name="problematique" id="username"
+                                  class="form-control"
+                                  value=""
+                                  placeholder="problematique">
+                          </div>
+  
+                          <div class="form-group">
+                              <label for="username" class="sr-only">
+                                      hypothese
+                              </label>
+                              <input type="text" name="hypothese" id="username"
+                                  class="form-control"
+                                  value=""
+                                  placeholder="hypothese">
+                          </div>
+  
+  
+                          <div class="form-group">
+                              <label for="username" class="sr-only">
+                                      anneeacademique
+                              </label>
+                              <input type="text" name="annAcad" id="username"
+                                  class="form-control"
+                                  value=""
+                                  placeholder="Annee Academique">
+                          </div>
+                          </div>
+  
+                          <button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Deposer le Suject</button>
+                      </form>
+                  </div>
+  
+                  
+              </div>
+          </div>
+      </div>
+  </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha3/js/bootstrap.min.js"></script>
-  <script>
-    function openModal() {
-      document.getElementById("myModal").classList.add("show");
-    }
 
-    function closeModal() {
-      document.getElementById("myModal").classList.remove("show");
+
+
+
+  
+<!DOCTYPE html>
+
+<html  dir="ltr" lang="fr" xml:lang="fr">
+<head>
+    <title>Retrouver tout les TFC: Se connecter sur le site</title>
+    <link rel="shortcut icon" href="#" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="" />
+<script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script>
+<link rel="stylesheet" type="text/css" href="https://www.esisalama.net/elearning/theme/styles.php/klass/1632863867_1632863891/all" />
+
+
+<meta name="robots" content="noindex" /><meta name="robots" content="noindex" /><meta name="robots" content="noindex" /><meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body  id="page-login-index" class="format-site  path-login chrome dir-ltr lang-fr yui-skin-sam yui3-skin-sam www-esisalama-net--elearning pagelayout-login course-1 context-1 notloggedin ">
+
+<div id="page-wrapper">
+
+    <div>
+    <a class="sr-only sr-only-focusable" href="#maincontent">Passer au contenu principal</a>
+</div><script src="https://www.esisalama.net/elearning/lib/javascript.php/1632863867/lib/babel-polyfill/polyfill.min.js"></script>
+<script src="https://www.esisalama.net/elearning/lib/javascript.php/1632863867/lib/polyfills/polyfill.js"></script>
+<script src="https://www.esisalama.net/elearning/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.js">
+    
+</script><script src="https://www.esisalama.net/elearning/theme/jquery.php/core/jquery-3.5.1.min.js"></script>
+<script src="https://www.esisalama.net/elearning/lib/javascript.php/1632863867/lib/javascript-static.js"></script>
+<script>
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+
+    <nav id="header" role="banner" class="fixed-top navbar navbar-light bg-faded navbar-expand moodle-has-zindex">
+
+     <div class="container navbar-nav">
+
+        <div data-region="drawer-toggle" class="d-inline-block mr-3">
+            <button aria-expanded="false" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav"><i class="icon fa fa-bars fa-fw " aria-hidden="true"  ></i><span class="sr-only">Panneau latéral</span>
+            <span aria-hidden="true"> </span>
+            <span aria-hidden="true"> </span>
+            <span aria-hidden="true"> </span>
+            </button>
+        </div>
+
+
+        <ul class="nav navbar-nav ml-auto">
+            <div class="d-none d-lg-block">
+                
+            </div>
+              <!-- navbar_plugin_output -->
+            <li class="nav-item">
+            
+            </li>
+            <!-- user_menu -->
+            <li class="nav-item d-flex align-items-center">
+                <div class="usermenu"><span class="login">Enregistrement de l'etudiant</span></div>
+            </li>
+        </ul>
+
+       <!-- search_box -->
+    </div>
+
+</nav>
+
+
+<div class="header-main">
+    <div class="header-main-content">
+        <div class="container">
+
+            <div class="navbar">
+                <div class="navbar-inner">
+                <div id="logo">
+                    <a href="https://www.esisalama.net/elearning/?redirect=0" class="navbar-brand has-logo
+                    ">
+                    <span class="logo">
+                        <img src="//www.esisalama.net/elearning/pluginfile.php/1/theme_klass/logo/1632863867/Logo%20Google%20Education.png" alt="ESIS Elearning">
+                    </span>
+                    </a>
+                </div>
+
+                <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+
+                <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+
+                <div class="infoarea ">
+
+                    <!-- custom_menu -->
+                    <li class="dropdown nav-item">
+   
+</li>
+                    <!-- page_heading_menu -->
+
+                </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+       </div>
+    </div>
+    
+</div>
+
+    <div id="page" class="container-fluid mt-0">
+        <div id="page-content" class="row">
+            <div id="region-main-box" class="col-12">
+                <section id="region-main" class="col-12">
+                    <span class="notifications" id="user-notifications"></span>
+                    <div role="main"><span id="maincontent"></span><div class="my-1 my-sm-5"></div>
+<div class="row justify-content-center">
+<div class="col-xl-6 col-sm-11 push-sm-1">
+<div class="card">
+    <div class="card-block">
+            <h2 class="card-header text-center" ><img src="https://www.esisalama.net/elearning/pluginfile.php/1/core_admin/logo/0x200/1632863867/logo.png" title="ESIS Enseignement en ligne" alt="ESIS Enseignement en ligne"/></h2>
+        <div class="card-body">
+
+            <label for="username" class="sr-only">
+                ENREGISTREMENT DE L'ETUDIANT
+            </label>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-5">
+                    <form class="mt-3" action="back\addEtudiant.php" method="post" id="login">
+                        <input id="anchor" type="hidden" name="anchor" value="">
+                        <script>document.getElementById('anchor').value = location.hash;</script>
+                        <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
+                        
+                       
+                        <div class="form-group">
+                            <label for="username" class="sr-only">
+                                    Matricule
+                            </label>
+                            <input type="text" name="matricule" id="username"
+                                class="form-control"
+                                value=""
+                                placeholder="Matricule">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="sr-only">
+                                    Nom  de l'etudiant
+                            </label>
+                            <input type="text" name="name" id="username"
+                                class="form-control"
+                                value=""
+                                placeholder="Nom de l'etudiant">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="sr-only">
+                                    Post_Nom de l'etudiant
+                            </label>
+                            <input type="text" name="post_nom" id="username"
+                                class="form-control"
+                                value=""
+                                placeholder="Post_nom">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="sr-only">
+                                    Prenom de letudiant
+                            </label>
+                            <input type="text" name="prenom" id="username"
+                                class="form-control"
+                                value=""
+                                placeholder="Prenom">
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                            <label class="sr-only">Promotion</label>
+                                <select class="select" name="promotion" id="promotion">
+                                <option value="1">L1</option>
+                                <option value="2">L2</option>
+                                <option value="3">L3</option>
+                                <option value="4">L4</option>
+                                </select>
+                           </div>
+                        <div class="form-group">
+                        <label class="sr-only" for="filiere">Filière</label>
+                            <select class="select" name="filiere" id="filiere">
+                            <option value="2">Génie logiciel</option>
+                            <option value="4">Management et systeme Informatique</option>
+                            <option value="5">design</option>
+                            <option value="6">Telecom</option>
+                            <option value="7">administration systeme</option>
+                            </select>
+                       </div>
+                        <div class="form-group">
+                            <label for="password" class="sr-only">Mot de passe</label>
+                            <input type="password" name="password" id="password" value=""
+                                class="form-control"
+                                placeholder="Mot de passe">
+                        </div>
+                            
+                        
+
+                        <button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Connexion</button>
+                        <a href="login.html">login</a>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+</div></div>
+                    
+                </section>
+            </div>
+        </div>
+    </div>
+</div><div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex closed" aria-hidden="true" tabindex="-1">
+    <nav class="list-group" aria-label="">
+        <ul>
+                <li>
+                    <a class="list-group-item list-group-item-action  " href="https://www.esisalama.net/elearning/" data-key="home" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="1" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" >
+                        <div class="ml-0">
+                            <div class="media">
+                                    <span class="media-left">
+                                        <i class="icon fa fa-home fa-fw " aria-hidden="true"  ></i>
+                                    </span>
+                                <span class="media-body ">Accueil</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+        </ul>
+    </nav>
+</div><footer id="footer" class="py-1 bg-inverse">
+   <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="infoarea">
+                        <div class="footer-logo">
+                            <a href="https://www.esisalama.net/elearning/?redirect=0">
+                                <img src="//www.esisalama.net/elearning/pluginfile.php/1/theme_klass/footerlogo/1632863867/Logo%20Google%20Education.png" alt="klass">
+                            </a>
+                        </div>
+                        
+                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info">
+                        <h5 class="nopadding">Nous contacter</h5>
+                        <p>5 Avenue Femmes Katangaise, Lubumbashi, RDCongo</p>
+                        <p><i class="fa fa-phone-square"></i>Téléphone : +(243) 82 226 74 72</p>
+                        <p><i class="fa fa-envelope"></i>Courriel : <a class="mail-link" href="mailto:apparitorat@esisalama.org"> apparitorat@esisalama.org</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="social-media">
+                    <h5>ajoutez un réseau social</h5>
+                    <ul>
+                            <li class="smedia-01">
+                                <a href="https://www.facebook.com/EsisOfficiel" target="_blank">
+                                    <i class="fa fa-facebook-square"></i>
+                                </a>
+                            </li>
+
+                            <li class="smedia-02">
+                                <a href="#" target="_blank">
+                                    <i class="fa fa-pinterest-square"></i>
+                                </a>
+                            </li>
+
+                            <li class="smedia-03">
+                                <a href="#" target="_blank">
+                                    <i class="fa fa-twitter-square"></i>
+                                </a>
+                            </li>
+
+                            <li class="smedia-04">
+                                <a href="#" target="_blank">
+                                   <i class="fa fa-google-plus-square"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-foot">
+        <div class="container">
+                <p>Copyright &copy; ESIS 2021 . Powered by CREDIA</p>
+        </div>
+    </div>
+
+</footer>
+
+<!--E.O.Footer-->
+
+<div class="tool_dataprivacy"><a href="https://www.esisalama.net/elearning/admin/tool/dataprivacy/summary.php">Résumé de conservation de données</a></div><a href="https://download.moodle.org/mobile?version=2020110904&amp;lang=fr&amp;iosappid=633359593&amp;androidappid=com.moodle.moodlemobile">Obtenir l'app mobile</a>
+<script>
+//<![CDATA[
+var require = {
+    baseUrl : 'https://www.esisalama.net/elearning/lib/requirejs.php/1632863867/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://www.esisalama.net/elearning/lib/javascript.php/1632863867/lib/jquery/jquery-3.5.1.min',
+        jqueryui: 'https://www.esisalama.net/elearning/lib/javascript.php/1632863867/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://www.esisalama.net/elearning/lib/javascript.php/1632863867/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
     }
-  </script>
-</body>
-</html>
+};
+
+//]]>
+</script>
+<script src="https://www.esisalama.net/elearning/lib/javascript.php/1632863867/lib/requirejs/require.min.js"></script>
+<script>
+//<![CDATA[
+M.util.js_pending("core/first");require(['core/first'], function() {
+require(['core/prefetch']);
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp('fr');
+});;
+
+require(['jquery', 'core/custom_interaction_events'], function($, CustomEvents) {
+    CustomEvents.define('#single_select6510b5e3c50c82', [CustomEvents.events.accessibleChange]);
+    $('#single_select6510b5e3c50c82').on(CustomEvents.events.accessibleChange, function() {
+        var ignore = $(this).find(':selected').attr('data-ignore');
+        if (typeof ignore === typeof undefined) {
+            $('#single_select_f6510b5e3c50c81').submit();
+        }
+    });
+});
+;
+
+require(['jquery', 'core/custom_interaction_events'], function($, CustomEvents) {
+    CustomEvents.define('#single_select6510b5e3c50c85', [CustomEvents.events.accessibleChange]);
+    $('#single_select6510b5e3c50c85').on(CustomEvents.events.accessibleChange, function() {
+        var ignore = $(this).find(':selected').attr('data-ignore');
+        if (typeof ignore === typeof undefined) {
+            $('#single_select_f6510b5e3c50c84').submit();
+        }
+    });
+});
+;
+
+require(['theme_boost/loader']);
+require(['theme_boost/drawer'], function(mod) {
+    mod.init();
+});
+;
+
+;
+M.util.js_pending('core/notification'); require(['core/notification'], function(amd) {amd.init(1, []); M.util.js_complete('core/notification');});;
+M.util.js_pending('core/log'); require(['core/log'], function(amd) {amd.setConfig({"level":"warn"}); M.util.js_complete('core/log');});;
+M.util.js_pending('core/page_global'); require(['core/page_global'], function(amd) {amd.init(); M.util.js_complete('core/page_global');});M.util.js_complete("core/first");
+});
+//]]>
+</script>
+<script src="https://www.esisalama.net/elearning/lib/javascript.php/1632863867/theme/klass/javascript/theme.js"></script>
+<script src="https://www.esisalama.net/elearning/theme/javascript.php/klass/1632863867/footer"></script>
+<script>
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Modifi\u00e9 le","name":"Nom","error":"Erreur","info":"Information","yes":"Oui","no":"Non","cancel":"Annuler","confirm":"Confirmer","areyousure":"En \u00eates-vous bien s\u00fbr\u00a0?","closebuttontitle":"Fermer","unknownerror":"Erreur inconnue","file":"Fichier","url":"URL"},"repository":{"type":"Type","size":"Taille","invalidjson":"Cha\u00eene JSON non valide","nofilesattached":"Aucun fichier joint","filepicker":"S\u00e9lecteur de fichiers","logout":"D\u00e9connexion","nofilesavailable":"Aucun fichier disponible","norepositoriesavailable":"D\u00e9sol\u00e9, aucun de vos d\u00e9p\u00f4ts actuels ne peut retourner de fichiers dans le format requis.","fileexistsdialogheader":"Le fichier existe","fileexistsdialog_editor":"Un fichier de ce nom a d\u00e9j\u00e0 \u00e9t\u00e9 joint au texte que vous modifiez.","fileexistsdialog_filemanager":"Un fichier de ce nom a d\u00e9j\u00e0 \u00e9t\u00e9 joint","renameto":"Renommer \u00e0 \u00ab\u00a0{$a}\u00a0\u00bb","referencesexist":"Il y a {$a} liens qui pointent vers ce fichier","select":"S\u00e9lectionnez"},"admin":{"confirmdeletecomments":"Voulez-vous vraiment supprimer des commentaires\u00a0?","confirmation":"Confirmation"},"debug":{"debuginfo":"Info de d\u00e9bogage","line":"Ligne","stacktrace":"Trace de la pile"},"langconfig":{"labelsep":"&nbsp;"}};
+//]]>
+</script>
+<script>
+//<![CDATA[
+(function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"fr"});
+});
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random6510b5e3c50c88'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random6510b5e3c50c88'); });
+})();
+//]]>
+</script>
+
+
+<div class="form-group">
+  <label for="username" class="sr-only">
+          nom du directeur
+  </label>
+  <input type="text" name="nom" id="nom"
+      class="form-control"
+      value=""
+      placeholder="nom du directeur">
+</div>
+
+<div class="form-group">
+  <label for="username" class="sr-only">
+         Post_Nom du directeur
+  </label>
+  <input type="text" name="postnom" id="postnom"
+      class="form-control"
+      value=""
+      placeholder="Post_Nom du directeurt">
+</div>
+
+<div class="form-group">
+  <label for="username" class="sr-only">
+          prenom du directeur
+  </label>
+  <input type="text" name="prenom" id="prenom"
+      class="form-control"
+      value=""
+      placeholder="prenom du directeur">
+</div>
+
+<div class="form-group">
+  <label for="username" class="sr-only">
+          specialite du directeur
+  </label>
+  <input type="text" name="specialite" id="specialite"
+      class="form-control"
+      value=""
+      placeholder="specialite du directeur">
+</div>
+
+
+<button type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Connexion</button>
+<a href="login.html">login</a>
+

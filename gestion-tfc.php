@@ -90,7 +90,7 @@
          
         <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
             <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
-                <a href="toutSujet.html">
+                <a href="toutSujet.php">
                     <br> 
                     <h2><span class = "glyphicon glyphicon-list-alt"></span> Tout le sujet</h2>
                     <br>
@@ -108,12 +108,13 @@
             </div> 
         </div> 
         <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
-            <input type="text" class="form-control" placeholder="Recherche">
+            <input type="text" class="form-control"  name="mot_cle" placeholder="Recherche">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
           </div> 
     </div>
+
     <!-- Pied de page --> 
     <footer> 
         <div class="container-fluid"> 
