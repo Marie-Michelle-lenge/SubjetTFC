@@ -2,6 +2,7 @@
     require 'back/config.php';
     if(session_status() == PHP_SESSION_NONE) session_start();
     $connect= isset($_SESSION["email"]);
+    $connectEtudiant=isset($_SESSION['etudiant']) && isset($_SESSION['compte']);
 ?>
 
 <!DOCTYPE html> 
@@ -133,17 +134,71 @@
            </div> 
      </div>
      <?php endif?>
+     <?php if($connectEtudiant):?>
+        <div style="display:flex;"class="container-fluid cadre-principal">
+         
+         <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
+             <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
+                 <a href="depotSuject.html">
+                    
+                     <h2><span class = "glyphicon glyphicon-list-alt"></span> Deposer Suject</h2>
+                     
+                 </a> 
+             </div> 
+         </div> 
+         <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
+         <div class = "col-xs-12 col-sm-6 text-right">
+                <ol class = "breadcrumb">
+                    <li><a href = "back/logout.php">Deconnexion</a></li>
+                </ol>
+            </div> 
+           </div> 
+     </div>
+     <?php endif?>
 
 
 
+     <?php
+            
+            require 'back/config.php';
+          
+           
+               $sql = "SELECT e.intitule,  e.annAcad, s.nom, s.postnom, s.prenom
+               FROM suject e
+               JOIN etudiant s ON e.matricule = s.matricule where etatArt='VALIDE'";
+               $result = mysqli_query($conn,$sql);
+               // Parcours des résultats de la requête
+               $sujects = [];
+               
+               while ($row = $result->fetch_assoc()) {
+                   $sujects[] = $row;
+               }
 
-    <div class="container-fluid cadre-principal"> 
-        <div class="container"> 
-            <div class="row" id="cards-horaire"> 
-               <!-- mettre tableau de sujet --> 
-               <h1> Mettre tableau de tout le sujet</h1>
-        </div> 
-    </div><!-- Pied de page --> 
+               
+              if (!empty($sujects)) {
+    echo '<table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">';
+    echo '<tr>';
+    foreach ($sujects[0] as $key => $value) {
+        echo '<th>' . $key . '</th>';
+    }
+    echo '</tr>';
+    foreach ($sujects as $suject) {
+        echo '<tr>';
+        foreach ($suject as $key => $value) {
+            echo '<td>' . $value . '</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
+} else {
+    echo 'Aucun sujet trouvé.';
+}
+
+
+               // Fermeture de la connexion à la base de données
+               $conn->close();
+
+           ?><!-- Pied de page --> 
     <footer> 
         <div class="container-fluid"> 
             <div class="row" id="bloc-info-plus"> 
