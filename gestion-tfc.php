@@ -1,4 +1,9 @@
-<!DOCTYPE html> 
+<?php
+    if(session_status()==PHP_SESSION_NONE) session_start();
+
+?>
+
+<!DOCTYPE html>
 <html> 
     <head> 
         <title>Esisalama</title> 
@@ -69,7 +74,7 @@
                 </div> <!--/.collapse--> 
             </div> <!--/.container--> 
         </nav> <!-- Facebook Pixel Code --> 
-        
+
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
     <div class = "container-fluid titre-page titre-fixe-on"> 
         <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
@@ -87,7 +92,6 @@
     
 
     <div style="display:flex;"class="container-fluid cadre-principal">
-         
         <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
             <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
                 <a href="toutSujet.php">
