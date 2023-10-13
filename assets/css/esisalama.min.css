@@ -324,6 +324,7 @@ blockquote {
 .liste-evenements > li > .temps {
     color: white;
     background-color: #e74c3c;
+    background-color: #bd8883;
     text-align: center;
     text-transform: uppercase;
     padding: 0px;
@@ -557,8 +558,8 @@ blockquote {
 }
 
 .menu-admin .active:hover,.menu-admin .active:focus {
-    background-color: rgba(52,152,219,0.3);
-    color: #34495e;
+    background-color:  #34495e;
+    color: rgba(52,152,219,0.3);
 }
 
 .menu-admin .disabled {

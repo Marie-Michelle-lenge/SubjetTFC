@@ -86,13 +86,14 @@
     <!-- body --> 
     
 
-    <div style="display:flex;"class="container-fluid cadre-principal">
+    <div style="display:flex; "class="container-fluid cadre-principal">
          
-        <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
+        <div  class="d-flex align-items-center justify-content-center" style="width: 50%; height: 30%;margin-left:23%; "> 
             <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
                 <a href="toutSujet.php">
                     <br> 
-                    <h2><span class = "glyphicon glyphicon-list-alt"></span> Tout le sujet</h2>
+                    <h2 style="color: #ffff;">
+                        <span class = "glyphicon glyphicon-list-alt"></span> Tout le sujet</h2>
                     <br>
                     <br>
                 </a> 
@@ -101,18 +102,16 @@
                 <a href="espaceEtudiant.html">
                     
                     <br> 
-                    <h2>  <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant</h2>
+                    <h2 >  
+                        <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant</h2>
                     <br>
                     <br>
                 </a> 
-            </div> 
-        </div> 
-        <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
-            <input type="text" class="form-control"  name="mot_cle" placeholder="Recherche">
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
-          </div> 
+
+
+        </div> 
+         
     </div>
 
     <!-- Pied de page --> 

@@ -94,37 +94,8 @@
     <?php if($connect):?>
         
         <div style="display:flex;"class="container-fluid cadre-principal">
-         
-         <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
-             <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
-                 <a href="addEtudiant.html">
-                    
-                     <h2><span class = "glyphicon glyphicon-list-alt"></span> Ajouter Etudiant</h2>
-                     
-                 </a> 
-             </div>
-             <div  style="background-color: rgba(230,126,34,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master" > 
-                 <a href="addDirecteur.html">
-                     
-                    
-                     <h2>  <span class = "glyphicon glyphicon-list-alt"></span> ajouter directeur</h2>
-                    
-                     
-                 </a> 
-             </div> 
-         </div> 
-         <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
-         <div class = "col-xs-12 col-sm-6 text-right">
-                <ol class = "breadcrumb">
-                    <li><a href = "back/logout.php">Deconnexion</a></li>
-                </ol>
-            </div> 
-           </div> 
-     </div>
-     
-     <?php endif?>
-     <form  action="toutSujet.php">
-        <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 90px; margin:none;">
+        <form  action="toutSujet.php">
+        <div class="input-group mb-5" style="width: 600px; align-items: center; margin-left: 30vh; padding: 20px; margin-top: -20px;">
             <input type="text" class="form-control"  name="mot_cle" placeholder="Recherche">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fa fa-search"></i></span>
@@ -132,6 +103,28 @@
           </div> 
     </div>
     </form>
+         <div class="col-xs-12 col-md-8" style="display:flex; padding: 0px; "> 
+            <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px; margin:10px; width: 500px; height: 70px;" class="thumbnail" id="card-master"> 
+                 <a href="addEtudiant.html">
+                    <h2><span class = "glyphicon glyphicon-list-alt"></span> Ajouter Etudiant</h2>
+                 </a>
+            </div>
+            <div  style="background-color: rgba(230,126,34,0.6); border-radius: 0px 0px 10px 10px; margin:10px ;width: 500px; height: 70px;" class="thumbnail" id="card-master" > 
+                <a href="addDirecteur.html">
+                    <h2>  <span class = "glyphicon glyphicon-list-alt"></span> ajouter directeur</h2>
+                </a> 
+             </div>
+         <div class = "col-xs-12 col-sm-6 text-center" >
+                <a style="margin-right:-140vh ;" href = "back/logout.php">Deconnexion</a>
+                
+        </div> 
+    </div>   
+</div> </div> 
+         
+     </div>
+     
+     <?php endif?>
+     
      <?php if($connectEtudiant):?>
 
     <div style="display:flex;" class="container-fluid ">

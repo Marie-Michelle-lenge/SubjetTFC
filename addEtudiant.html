@@ -73,12 +73,12 @@
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
         <div class = "container-fluid titre-page titre-fixe-on"> 
             <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant </h1> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Ajouter Etudiant </h1> 
             </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.php">Accueil</a></li>
-                    <li>Espace Etudiant</li>
+                    <li><a href = "index.html">Accueil</a></li>
+                    <li>Ajouter Etudiant</li>
                 </ol>
             </div> 
         </div> 
@@ -100,63 +100,84 @@
                         
                                     <div style="width: 100vh;align-items: center;" class="row justify-content-md-center">
                                         <div class="col-md-5">
-                                            <form class="mt-3" action="back/depotSuject.php" method="post" id="login">
+                                            <form class="mt-3" action="back\addEtudiant.php" method="post" id="login">
                                                 <input id="anchor" type="hidden" name="anchor" value="">
                                                 <script>document.getElementById('anchor').value = location.hash;</script>
                                                 <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
+                                                
+                                               
                                                 <div class="form-group">
                                                     <label for="username" class="sr-only">
-                                                            intitule du Suject
+                                                            Matricule
                                                     </label>
-                                                    <input style="width: 80vh; text-align: center;" type="text" name="intitule" id="username"
+                                                    <input style="width: 80vh; text-align: center;" type="text" name="matricule" id="username"
                                                         class="form-control"
                                                         value=""
-                                                        placeholder="intiltule du suject">
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                    <label for="username" class="sr-only">
-                                                            theme
-                                                    </label>
-                                                    <input  style="width: 80vh; text-align: center;" type="text" name="theme" id="username"
-                                                        class="form-control"
-                                                        value=""
-                                                        placeholder="Theme">
+                                                        placeholder="Matricule">
                                                 </div>
                         
                                                 <div class="form-group">
                                                     <label for="username" class="sr-only">
-                                                            problematique
+                                                            Nom  de l'etudiant
                                                     </label>
-                                                    <input  style="width: 80vh; text-align: center;" type="text" name="problematique" id="username"
+                                                    <input style="width: 80vh; text-align: center;" type="text" name="name" id="username"
                                                         class="form-control"
                                                         value=""
-                                                        placeholder="problematique">
+                                                        placeholder="Nom de l'etudiant">
                                                 </div>
                         
                                                 <div class="form-group">
                                                     <label for="username" class="sr-only">
-                                                            hypothese
+                                                            Post_Nom de l'etudiant
                                                     </label>
-                                                    <input  style="width: 80vh; text-align: center;" type="text" name="hypothese" id="username"
+                                                    <input style="width: 80vh; text-align: center;" type="text" name="post_nom" id="username"
                                                         class="form-control"
                                                         value=""
-                                                        placeholder="hypothese">
+                                                        placeholder="Post_nom">
                                                 </div>
-                        
                         
                                                 <div class="form-group">
                                                     <label for="username" class="sr-only">
-                                                            anneeacademique
+                                                            Prenom de letudiant
                                                     </label>
-                                                    <input  style="width: 80vh; text-align: center;" type="text" name="annAcad" id="username"
+                                                    <input style="width: 80vh; text-align: center;" type="text" name="prenom" id="username"
                                                         class="form-control"
                                                         value=""
-                                                        placeholder="Annee Academique">
-                                                </div>
+                                                        placeholder="Prenom">
                                                 </div>
                         
-                                                <button  style="width: 85vh; text-align: center;" type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Deposer le Suject</button>
+                                                
+                        
+                                                <div class="form-group">
+                                                    <label style="width: 80vh; text-align: center;" class="sr-only">Promotion</label>
+                                                        <select style="width: 80vh; text-align: center;" class="select" name="promotion" id="promotion">
+                                                        <option value="1">L1</option>
+                                                        <option value="2">L2</option>
+                                                        <option value="3">L3</option>
+                                                        <option value="4">L4</option>
+                                                        </select>
+                                                   </div>
+                                                <div class="form-group">
+                                                <label style="width: 80vh; text-align: center;" class="sr-only" for="filiere">Filière</label>
+                                                    <select style="width: 80vh; text-align: center;" class="select" name="filiere" id="filiere">
+                                                    <option value="2">Génie logiciel</option>
+                                                    <option value="4">Management et systeme Informatique</option>
+                                                    <option value="5">design</option>
+                                                    <option value="6">Telecom</option>
+                                                    <option value="7">administration systeme</option>
+                                                    </select>
+                                               </div>
+                                                <div class="form-group">
+                                                    <label for="password" class="sr-only">Mot de passe</label>
+                                                    <input style="width: 80vh; text-align: center;"type="password" name="password" id="password" value=""
+                                                        class="form-control"
+                                                        placeholder="Mot de passe">
+                                                </div>
+                                                    
+                                                
+                        
+                                                <button style="width: 80vh; text-align: center;" type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Connexion</button>
+                                                
                                             </form>
                                         </div>
                         
@@ -172,6 +193,7 @@
 
                 
             </div> 
+    </div>
     </div>
     </div>
     <br>

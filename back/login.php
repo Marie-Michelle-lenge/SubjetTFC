@@ -1,10 +1,10 @@
 <?php
 require 'config.php';
 
-if(isset($_POST["pseudo"])&& isset($_POST["password"])){
+if(isset($_POST["matricule"])&& isset($_POST["motdepasse"])){
 // Vérification des informations d'authentification
-$pseudo = $_POST["pseudo"];
-$password = $_POST["password"];
+$pseudo = $_POST["matricule"];
+$password = $_POST["motdepasse"];
 
 if(filter_var($pseudo, FILTER_VALIDATE_EMAIL)){
     $query="SELECT admin.email,admin.password FROM admin WHERE email='$pseudo' AND password='$password'";
