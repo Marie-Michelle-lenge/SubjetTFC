@@ -129,17 +129,16 @@
      <?php if($connectEtudiant):?>
         
         <div style="display:flex; "class="container-fluid cadre-principal">
-        
+
         <div class="d-flex align-items-center justify-content-center" style=" height: 100%; "> 
          <div style="padding: 10px;"> 
             <a href="#" class="btn btn-primary" role="button">Deposer sujet</a> 
         </div>
          </div>
-         <div class="input-group mb-5" style="width: 700px; margin-left: 80vh;">
+         <div class="input-group mb-5" style=" height:100px; margin-left: 140vh;">
          <div class = "col-xs-12 col-sm-6 text-right">
-            <ol class = "breadcrumb">
-                <li><a href = "back/logout.php">Deconnexion</a></li>
-            </ol>
+            
+            <a href = "back/logout.php">Deconnexion</a>
         </div> 
     </div> 
      </div>
