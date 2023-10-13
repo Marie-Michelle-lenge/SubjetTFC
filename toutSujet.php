@@ -127,24 +127,24 @@
      <?php endif?>
      
      <?php if($connectEtudiant):?>
-
-    <div style="display:flex;" class="container-fluid ">
-         <div class="col-xs-12 col-md-8" style=" height: 100%; "> 
-             <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
-                 <a href="depotSuject.html">
-                    
-                     <h2><span class = "glyphicon glyphicon-list-alt"></span> Deposer Suject</h2>
-                     
-                 </a> 
-             </div> 
+        
+        <div style="display:flex; "class="container-fluid cadre-principal">
+        
+        <div class="d-flex align-items-center justify-content-center" style=" height: 100%; "> 
+         <div style="padding: 10px;"> 
+            <a href="#" class="btn btn-primary" role="button">Deposer sujet</a> 
+        </div>
          </div>
-    <div class="input-group mb-5" style="width: 700px; margin-left: 80vh;">
+         <div class="input-group mb-5" style="width: 700px; margin-left: 80vh;">
          <div class = "col-xs-12 col-sm-6 text-right">
             <ol class = "breadcrumb">
                 <li><a href = "back/logout.php">Deconnexion</a></li>
             </ol>
         </div> 
     </div> 
+     </div>
+
+    
     </div>
 
      <?php endif?>

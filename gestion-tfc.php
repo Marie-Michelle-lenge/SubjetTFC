@@ -89,16 +89,13 @@
         </div> 
     </div> 
     <!-- body --> 
-    
 
-<<<<<<< HEAD
     <div style="display:flex; "class="container-fluid cadre-principal">
          
         <div  class="d-flex align-items-center justify-content-center" style="width: 50%; height: 30%;margin-left:23%; "> 
-=======
-    <div style="display:flex;"class="container-fluid cadre-principal">
+
         <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
->>>>>>> d1cde028c30e1cdc0a33a7b400c7bacff30cd23d
+
             <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
                 <a href="toutSujet.php">
                     <br> 
@@ -123,6 +120,9 @@
         </div> 
          
     </div>
+</div>
+</div>
+</div>
 
     <!-- Pied de page --> 
     <footer> 
