@@ -3,6 +3,7 @@
     if(session_status() == PHP_SESSION_NONE) session_start();
     $connect= isset($_SESSION["email"]);
     $connectEtudiant=isset($_SESSION['etudiant']) && isset($_SESSION['compte']);
+
 ?>
 
 <!DOCTYPE html> 
@@ -104,16 +105,16 @@
     </div>
     </form>
          <div class="col-xs-12 col-md-8" style="display:flex; padding: 0px; "> 
-            <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px; margin:10px; width: 500px; height: 70px;" class="thumbnail" id="card-master"> 
-                 <a href="addEtudiant.html">
-                    <h2><span class = "glyphicon glyphicon-list-alt"></span> Ajouter Etudiant</h2>
-                 </a>
+            <div style="padding: 10px;  "> 
+            <a href="addEtudiant.html" class="btn btn-primary" role="button"> 
+                <span class = "glyphicon glyphicon-list-alt"></span> Ajouter Etudiant</a> 
             </div>
-            <div  style="background-color: rgba(230,126,34,0.6); border-radius: 0px 0px 10px 10px; margin:10px ;width: 500px; height: 70px;" class="thumbnail" id="card-master" > 
-                <a href="addDirecteur.html">
-                    <h2>  <span class = "glyphicon glyphicon-list-alt"></span> ajouter directeur</h2>
-                </a> 
-             </div>
+            <div style="padding: 10px; "> 
+            <a href="addEtudiant.html" class="btn btn-primary" role="button"> 
+                <span class = "glyphicon glyphicon-list-alt"></span> Ajouter directeur</a> 
+            </div>
+            </div>
+
          <div class = "col-xs-12 col-sm-6 text-center" >
                 <a style="margin-right:-140vh ;" href = "back/logout.php">Deconnexion</a>
                 
@@ -155,42 +156,41 @@
             require 'back/config.php';
           
            
-               $sql = "SELECT e.intitule,  e.annAcad, s.nom, s.postnom, s.prenom
+               $sql = "SELECT e.idSuject,e.intitule,  e.annAcad,e.etatArt, s.nom, s.postnom, s.prenom
                FROM suject e
-               JOIN etudiant s ON e.matricule = s.matricule ";
-               $result = mysqli_query($conn,$sql);
+               JOIN etudiant s ON e.matricule = s.matricule";
+               if(!$connect){
+                   $sql.=" where etatArt='VALIDE'";
+               }
+
 
                 if(isset($_POST['mot_cle'])){
                     $mot_cle=$_POST['mot_cle'];
-                    $sql='SELECT e.idsuject,e.intitule,s.nom,s.postno,s.prenom,s.mqtricule
+                    $sql='SELECT e.idsuject,e.intitule,s.nom,s.postnom,s.prenom,s.matricule
                     FROM suject e
                     JOIN etudiant s ON e.matricule = s.matricule
                     WHERE e.intitule LIKE "%' .$mot_cle . '%"';
                     $result=$conn->query($sql);
                 }
-
-               // Parcours des résultats de la requête
-               $sujects = [];
-               
-               while ($row = $result->fetch_assoc()) {
-                   $sujects[] = $row;
-               }
+                $stmt=$pdo->query($sql);
+                $sujects=$stmt->fetchAll();
 
                
               if (!empty($sujects)) {
                 echo '<div class="container-fluid cadre-principal">';
                 echo '<table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">';
-                echo '<tr>';
-                foreach ($sujects[0] as $key => $value) {
-                    echo '<th>' . $key . '</th>';
-                }
-                echo '</tr>';
+                echo '<tr><th>intitule</th><th>Année académique</th><th>nom</th><th>postnom</th><th>prenom</th>';
+                if($connect) echo '<th>Etat</th>';
+
                 foreach ($sujects as $suject) {
                     echo '<tr>';
-                    foreach ($suject as $key => $value) {
-                        echo '<td>' . $value . '</td>';
+                    echo '<td>'.$suject['intitule'].'</td><td>'.$suject['annAcad'].'</td><td>'.$suject['nom'].'</td><td>'.$suject['postnom'].'</td>';
+                    echo '<td>'.$suject['prenom'];
+                    $idSuject=$suject['idSuject'];
+                    if($connect){
+                        echo '<a href="back/validation.php?idSuject='.$idSuject.'"><img src="assets/img/validation.png" width="30px"></a>';
                     }
-                    echo '</tr>';
+                    if($connect) echo '</td><td>'.$suject['etatArt'].'</td></tr>';
                 }
                 echo '</table>';
             } else {
@@ -202,7 +202,8 @@
                // Fermeture de la connexion à la base de données
                $conn->close();
 
-           ?><!-- Pied de page --> 
+           ?><!-- Pied de page -->
+
     <footer> 
         <div class="container-fluid"> 
             <div class="row" id="bloc-info-plus"> 
