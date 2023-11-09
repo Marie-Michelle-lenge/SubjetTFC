@@ -1,9 +1,8 @@
+
 <?php
-    if(session_status()==PHP_SESSION_NONE) session_start();
-
-?>
-
-<!DOCTYPE html>
+    // Démarrer la session
+    if(session_status() == PHP_SESSION_NONE) session_start(); ?>
+<!DOCTYPE html> 
 <html> 
     <head> 
         <title>Esisalama</title> 
@@ -13,7 +12,7 @@
         <link href="assets/css/esisalama.min.css" rel="stylesheet" type="text/css" /> 
         <link href="assets/img/favicon.png" rel="icon" type="image/png" /> 
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" /><![endif]--> 
-    </head>
+    </head> 
     <body> <!-- Barre de navigation/menu --> 
         <nav class="navbar navbar-inverse navbar-fixed-top"> 
             <div class="container"> <!-- Logo et bouton toggle --> 
@@ -34,8 +33,8 @@
                     <p class="navbar-left visible-sm visible-md titre-site"> E.S.I.S. </p> 
                     <ul class="nav navbar-nav navbar-right"> 
                         <li role="presentation" class=""> 
-                            <a href="index.html" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
-                        </li> 
+                            <a href="index.php" id="menu-accueil"><span class="glyphicon glyphicon-home"></span> Accueil</a> 
+                        </li>
                         <li class="dropdown active" role="presentation"> 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> 
                                 <span class="glyphicon glyphicon-book"></span> Education <span class="caret"></span> 
@@ -43,7 +42,7 @@
                             <ul class="dropdown-menu"> 
                                 <!--<li><a href="index.php?module=calendrier">Calendrier académique</a></li>--> 
                                 <li><a href="horaire.html">Horaire des cours</a></li> 
-                                <li><a href="gestion-tfc.php">TFC</a></li>
+                                <li><a href="gestion-tfc.html">TFC</a></li>
                                 <!--<li><a href="index.php?module=apropos&amp;onglet=cursus#filieres">Filières</a></li>--> 
                                 <li><a href="centred'excellence.html">Centre d'Excellence</a></li> 
                                 <li><a href="bibliotheque.html">Bibliothèque</a></li> 
@@ -52,7 +51,8 @@
                                 <li><a href="https://www.esisalama.net/elearning/" target="_blank">E-learning</a></li> 
                                 <!--<li><a href="https://recours.credia.io" target="_blank">Recours</a></li>--> <!--<li><a href="https://colibris.credia.io" target="_blank">Suivi TFC</a></li>--> 
                                 <!--<li><a href="https://jsesis2022.esisalama.com/js3sis2022/">Journée Scientifique 2022</a></li>--> 
-                                <li><a href="https://jsesis2022.esisalama.com/jsEsis/2023/">Journée Scientifique 2023</a></li> 
+                                <li><a href="https://jsesis2022.esisalama.com/jsEsis/2023/">Journée Scientifique 2023</a></li>
+                                <li><a href="connexion-tfc.php">admin</a></li>
                             </ul> 
                         </li> 
                         <li role="presentation" class=""> 
@@ -65,101 +65,59 @@
                             </a> 
                             <ul class="dropdown-menu" id="menu-a-propos"> 
                                 <li><a href="presentation.html">Présentation</a></li> 
-                                <li><a href="cursus.html">Cursus</a></li> 
-                                <li><a href="admin.html">Admission</a></li> 
-                                <li><a href="contact.html">Nous contacter</a></li> 
+                                    <li><a href="cursus.html">Cursus</a></li> 
+                                    <li><a href="admin.html">Admission</a></li> 
+                                    <li><a href="contact.html">Nous contacter</a></li>
                             </ul> 
                         </li> 
                     </ul> 
                 </div> <!--/.collapse--> 
             </div> <!--/.container--> 
         </nav> <!-- Facebook Pixel Code --> 
-
+         
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
-    <div class = "container-fluid titre-page titre-fixe-on"> 
-        <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-            <h1> <span class = "glyphicon glyphicon-list-alt"></span> Depot de TFC </h1> 
-        </div> 
+        <div class = "container-fluid titre-page titre-fixe-on"> 
+            <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span>  COMMENTAIRE SUR LE SUJET </h1> 
+            </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.html">Accueil</a></li>
-                    <li> <a href = "connexion-tfc.php">connexion</a> </li>
+                    <li><a href = "espaceEtudiant.html">connexion</a></li>
+                    <li>Espace Etudiant</li>
                 </ol>
             </div> 
         </div> 
     </div> 
-    <!-- body --> 
-    
+    <br><br><br><br><br>
+    <?php 
+    require_once 'back/config.php';
+    $idSuject= $_GET['idSuject'];
+   
+    ?>
+    <form action=""  methode="post">
+    <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 90px; margin:none;">
+            <div class="input-group-append ">
+              <span class="input-group-text">
+              <div class="form-group">
+  <p>
+    <textarea name="commentaire" id="username" style="width: 80vh; text-align: center;" type="text" class="form-control" placeholder="commentaire sur le sujet"></textarea>
 
-    <div style="display:flex;"class="container-fluid cadre-principal">
-        <div class="col-xs-12 col-md-8" style="width: 80%; height: 100%;"> 
-            <div style="background-color: rgba(41,128,185,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master"> 
-                <a href="toutSujet.php">
-                    <br> 
-                    <h2><span class = "glyphicon glyphicon-list-alt"></span> Tout les sujets</h2>
-                    <br>
-                    <br>
-                </a> 
-            </div>
-            <div  style="background-color: rgba(230,126,34,0.6); border-radius: 0px 0px 10px 10px;" class="thumbnail" id="card-master" > 
-                <a href="espaceEtudiant.html">
-                    
-                    <br> 
-                    <h2>  <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant</h2>
-                    <br>
-                    <br>
-                </a> 
-            </div> 
-        </div> 
-        <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 80px;">
-        
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fa fa-search"></i></span>
-            </div>
+</p>
+
+
+</div>
+            </span>
+            </div><br><br><br>
+            <a href="admin.php?idSuject='.$idSuject.'" class="btn btn-primary" role="button">ENVOYER</a> 
           </div> 
-    </div>
+        </div>
+        </form>
+        
 
-    <!-- Pied de page --> 
-    <footer> 
-        <div class="container-fluid"> 
-            <div class="row" id="bloc-info-plus"> 
-                <div class="col-xs-12 col-md-4"> 
-                    <h3 class="titre-pied">COORDONNEES</h3> 
-                    <p> République Démocratique du Congo (RDC)<br /> 
-                        <span class="glyphicon glyphicon-earphone"></span> +(243) 82 226 74 72<br /> 
-                        <a href="mailto:info@esisalama.org"> 
-                            <span class="glyphicon glyphicon-envelope"></span> info@esisalama.org 
-                        </a> 
-                    </p> 
-                </div> 
-                <div class="col-xs-12 col-md-4"> 
-                    <h3 class="titre-pied">QUELQUES LIENS UTILES</h3> 
-                    <p><a href="index.php?module=horaire" >Horaires des cours</a></p> 
-                    <!--<p><a href="index.php?module=calendrier" >Calendrier académique</a></p>--> 
-                    <p><a href="index.php?module=actualite" >Voir actualités</a></p> 
-                </div> 
-                <div class="col-xs-12 col-md-4"> 
-                    <h3 class="titre-pied">RESTONS CONNECTES</h3> 
-                    <p> 
-                        <a href="https://www.google.com" target="_blank"> 
-                            <img src="assets/img/autres/GooglePlus.svg" alt="logo GooglePlus" /> 
-                        </a> 
-                        <a href="https://www.facebook.com/EsisOfficiel" target="_blank"> 
-                            <img src="assets/img/autres/Facebook.svg" alt="logo Facebook" /> 
-                        </a> 
-                        <a href="https://www.youtube.com/channel/UCtDV8isvHNC0fli1FjYB-Xw" target="_blank"> 
-                            <img src="assets/img/autres/Youtube.svg" alt="logo Youtube" /> 
-                        </a> 
-                    </p> 
-                </div> 
-            </div> 
-        </div> 
-        <div class="container" id="bloc-copyright"> 
-            <div class="row"> 
-                <div class="col-xs-12"> Copyright &copy; ESISALAMA 2023 </div> 
-            </div> 
-        </div> 
-    </footer> 
+
+
+
+    
     <!-- Inclusion fichiers JavaScript --> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 

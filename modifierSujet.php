@@ -1,3 +1,29 @@
+<?php 
+    require 'back/config.php';
+    if(session_status() == PHP_SESSION_NONE) session_start();
+        $connect= isset($_SESSION["email"]);
+        $etudiant = $_SESSION["etudiant"];
+        
+
+
+
+
+ 
+
+
+
+
+
+// Liste des directeurs
+$directeurs = array();
+$_SESSION["directeur"] = $directeurs;
+
+
+
+
+?>
+
+<?php if($etudiant):?>
 <!DOCTYPE html> 
 <html> 
     <head> 
@@ -73,12 +99,12 @@
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
         <div class = "container-fluid titre-page titre-fixe-on"> 
             <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Ajouter Directeur </h1> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant </h1> 
             </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "gestion-tfc.php">Depot FTC</a></li>
-                    <li>Ajouter Directeur</li>
+                    <li><a href = "index.php">Accueil</a></li>
+                    <li>Modifier Sujet</li>
                 </ol>
             </div> 
         </div> 
@@ -94,63 +120,146 @@
                         <div class="card">
                             <div class="card-block">
                                     <h2 class="card-header text-center" >
-                                      <img src="https://www.esisalama.net/elearning/pluginfile.php/1/core_admin/logo/0x200/1632863867/logo.png" title="ESIS Enseignement en ligne" alt="ESIS Enseignement en ligne"/>
-                                    </h2>
+                                      <img src="https://www.esisalama.net/elearning/pluginfile.php/1/core_admin/logo/0x200/1632863867/logo.png" title="ESIS Enseignement en ligne" alt="ESIS Enseignement en ligne"/></h2>
                                 <div class="card-body">
                         
                         
                                     <div style="width: 100vh;align-items: center;" class="row justify-content-md-center">
                                         <div class="col-md-5">
-                                            <form class="mt-3" action="back/depotSuject.php" method="post" id="login">
+                                        <form action="back/modifie.php" method="post" id="login">
                                                 <input id="anchor" type="hidden" name="anchor" value="">
                                                 <script>document.getElementById('anchor').value = location.hash;</script>
                                                 <input type="hidden" name="logintoken" value="tZC4dejbWg2vHkyI1SG7BY3SKSIoa3ly">
                                                 <div class="form-group">
-                                                    <div class="form-group">
-                                                        <label for="username" class="sr-only">
-                                                                nom du directeur
-                                                        </label>
-                                                        <input style="width: 80vh; text-align: center;" type="text" name="nom" id="nom"
-                                                            class="form-control"
-                                                            value=""
-                                                            placeholder="nom du directeur">
-                                                      </div>
-                                                      
-                                                      <div class="form-group">
-                                                        <label for="username" class="sr-only">
-                                                               Post_Nom du directeur
-                                                        </label>
-                                                        <input style="width: 80vh; text-align: center;" type="text" name="postnom" id="postnom"
-                                                            class="form-control"
-                                                            value=""
-                                                            placeholder="Post_Nom du directeurt">
-                                                      </div>
-                                                      
-                                                      <div class="form-group">
-                                                        <label for="username" class="sr-only">
-                                                                prenom du directeur
-                                                        </label>
-                                                        <input style="width: 80vh; text-align: center;" type="text" name="prenom" id="prenom"
-                                                            class="form-control"
-                                                            value=""
-                                                            placeholder="prenom du directeur">
-                                                      </div>
-                                                      
-                                                      <div class="form-group">
-                                                        <label for="username" class="sr-only">
-                                                                specialite du directeur
-                                                        </label>
-                                                        <input  style="width: 80vh; text-align: center;" type="text" name="specialite" id="specialite"
-                                                            class="form-control"
-                                                            value=""
-                                                            placeholder="specialite du directeur">
-                                                      </div>
-                                                      
-                                                      
-                                                      <button style="width: 80vh; text-align: center;" type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Ajouter Directeur</button>
-                                                     
-                                                      
-                                                      
+                                                    <label for="username" class="sr-only">
+                                                            intitule du Suject
+                                                    </label>
+                                                    <input style="width: 80vh; text-align: center;" type="text" name="intitule" id="username"
+                                                        class="form-control"
+                                                        value=""
+                                                        placeholder="intiltule du suject">
+                                                </div>
+                        
+                                                                                            <div class="form-group">
+                                                    <label for="username" class="sr-only">
+                                                        Theme
+                                                    </label>
+                                                    <select name="theme" id="theme" class="form-control" onkeyup="getDirecteurs();">
+                                                        <?php
+                                                        // Récupérez la liste des thèmes
+                                                        $themes = mysqli_query($conn, "SELECT designation FROM theme");
+
+                                                        // Parcourez la liste des thèmes
+                                                        while ($theme = mysqli_fetch_assoc($themes)) {
+                                                            // Ajoutez le thème à la liste d'options
+                                                            echo '<option value="' . $theme['designation'] . '">' . $theme['designation'] . '</option>';
+                                                            $theme=$_SESSION['theme'];
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                
+                                                <div class="form-group" id="directeur-select">
+                                                    <label for="username" class="sr-only">
+                                                            Directeur
+                                                    </label>
+                                                    <?php
+
+                                                        require 'back/config.php';
+
+                                                        // Récupérez le thème entré dans le champ thème
+                                                        $_SESSION['theme']=$theme;
+
+                                                        // Vérifiez si le thème existe
+                                                        $query = "SELECT * FROM theme WHERE designation = '$theme'";
+                                                        $result = mysqli_query($conn, $query);
+                                                        $theme_existe = mysqli_num_rows($result) > 0;
+
+                                                        // Liste des directeurs
+                                                        $directeurs = array();
+
+                                                        if ($theme_existe) {
+                                                            // Récupérez les directeurs ayant la même spécialité que le thème
+                                                            $query = "SELECT idDir, nom, prenom, postnom, specialite FROM directeur WHERE specialite LIKE '%$theme%'";
+                                                            $result = mysqli_query($conn, $query);
+
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                $directeurs[] = array(
+                                                                    'id' => $row['idDir'],
+                                                                    'nom' => $row['nom'],
+                                                                    'prenom' => $row['prenom'],
+                                                                    'postnom' => $row['postnom'],
+                                                                    'specialite' => $row['specialite']
+                                                                );
+                                                            }
+                                                        }
+
+                                                        // Afficher la liste déroulante
+                                                        echo '<select name="id_directeur" id="id_directeur" class="form-control">';
+
+                                                        if ($directeurs) {
+                                                            foreach ($directeurs as $directeur) {
+                                                                echo '<option value="' . $directeur['id'] . '">' . $directeur['nom'] . ' ' . $directeur['prenom'] . ' ' . $directeur['postnom'] . '</option>';
+                                                                $id_directeur=$directeur['id'];
+                                                                $_SESSION['id_directeur']=$id_directeur;
+
+                                                            }
+                                                        } else {
+                                                            echo '<option value="">Aucun directeur trouvé</option>';
+                                                        }
+
+                                                        echo '</select>';
+
+                                                        ?>
+
+
+                                                    </select>
+                                                </div>
+                                            
+                                                <div class="form-group">
+                                                    <label for="username" class="sr-only">
+                                                            etatArt
+                                                    </label>
+                                                    <input  style="width: 80vh; text-align: center;" type="text" name="etatdeArt" id="username"
+                                                        class="form-control"
+                                                        value=""
+                                                        placeholder="etat de l'Art">
+                                                </div>
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="username" class="sr-only">
+                                                            problematique
+                                                    </label>
+                                                    <p>
+                                                        <textarea name="problematique" id="username"style="width: 80vh; text-align: center;" type="text"class="form-control"placeholder="problematique"></textarea>
+                                                      </p>
+                                                </div>
+                                                
+                        
+                                                <div class="form-group">
+                                                    <label for="username" class="sr-only">
+                                                            hypothese
+                                                    </label>
+                                                    <p>
+                                                        <textarea name="hypothese" id="username"style="width: 80vh; text-align: center;" type="text"class="form-control"placeholder="hypothese"></textarea>
+                                                      </p>
+                                                </div>
+                                                
+                                            </div>
+                        
+                                                <div class="form-group">
+                                                    <label for="username" class="sr-only">
+                                                            anneeacademique
+                                                    </label>
+                                                    <input  style="width: 80vh; text-align: center;" type="text" name="annAcad" id="username"
+                                                        class="form-control" 
+                                                        value=""
+                                                        placeholder="Annee Academique"
+                                                        >
+                                                </div>
+                                                </div>
+                        
+                                                <button  style="width: 85vh; text-align: center;" type="submit" class="btn btn-primary btn-block mt-3" id="loginbtn">Deposer le Suject</button>
                                             </form>
                                         </div>
                         
@@ -161,15 +270,18 @@
                         </div>
                         </div>
 
-                    </div>  
+                    
                 </div>
-            </div>
+
                 
             </div> 
     </div>
     </div>
     <br>
     <br>
+ 
+     <?php endif?>
+
     <!-- Pied de page --> 
     <footer> 
         <div class="container-fluid"> 

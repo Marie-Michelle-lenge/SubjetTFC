@@ -55,7 +55,8 @@
                                 <li><a href="https://www.esisalama.net/elearning/" target="_blank">E-learning</a></li> 
                                 <!--<li><a href="https://recours.credia.io" target="_blank">Recours</a></li>--> <!--<li><a href="https://colibris.credia.io" target="_blank">Suivi TFC</a></li>--> 
                                 <!--<li><a href="https://jsesis2022.esisalama.com/js3sis2022/">Journée Scientifique 2022</a></li>--> 
-                                <li><a href="https://jsesis2022.esisalama.com/jsEsis/2023/">Journée Scientifique 2023</a></li> 
+                                <li><a href="https://jsesis2022.esisalama.com/jsEsis/2023/">Journée Scientifique 2023</a></li>
+                                <li><a href="connexion-tfc.php">admin</a></li>
                             </ul> 
                         </li> 
                         <li role="presentation" class=""> 
@@ -81,74 +82,35 @@
         <!-- End Facebook Pixel Code --> <!--Titre de la page --> 
         <div class = "container-fluid titre-page titre-fixe-on"> 
             <div class = "row"> <div class = "col-xs-12 col-sm-6"> 
-                <h1> <span class = "glyphicon glyphicon-list-alt"></span> Espace Etudiant </h1> 
+                <h1> <span class = "glyphicon glyphicon-list-alt"></span> TOUS LES SUJETS </h1> 
             </div> 
             <div class = "col-xs-12 col-sm-6 text-right">
                 <ol class = "breadcrumb">
-                    <li><a href = "index.html">Accueil</a></li>
+                    <li><a href = "espaceEtudiant.html">connexion</a></li>
                     <li>Espace Etudiant</li>
                 </ol>
             </div> 
         </div> 
     </div> 
-    
-    <?php if($connect):?>
-        
-        <div style="display:flex;"class="container-fluid cadre-principal">
-        <form  action="toutSujet.php">
-        <div class="input-group mb-5" style="width: 600px; align-items: center; margin-left: 30vh; padding: 20px; margin-top: -20px;">
-            <input type="text" class="form-control"  name="mot_cle" placeholder="Recherche">
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fa fa-search"></i></span>
+    <form action="toutSujet.php" method="post">
+        <div class="input-group mb-5" style="width: 800px; align-items: center; margin-left: 30vh; padding: 90px; margin:none;">
+            
+                
+            <div class="input-group-append ">
+              <span class="input-group-text">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control"  name="mot_cle" placeholder="Recherche">
+                <br>
+                <br>
+                <input type="submit" value="Rechercher">
+             </span>
             </div>
           </div> 
-    </div>
-    </form>
-         <div class="col-xs-12 col-md-8" style="display:flex; padding: 0px; "> 
-            <div style="padding: 10px;  "> 
-            <a href="addEtudiant.html" class="btn btn-primary" role="button"> 
-                <span class = "glyphicon glyphicon-list-alt"></span> Ajouter Etudiant</a> 
-            </div>
-            <div style="padding: 10px; "> 
-            <a href="addEtudiant.html" class="btn btn-primary" role="button"> 
-                <span class = "glyphicon glyphicon-list-alt"></span> Ajouter directeur</a> 
-            </div>
-            </div>
-
-         <div class = "col-xs-12 col-sm-6 text-center" >
-                <a style="margin-right:-140vh ;" href = "back/logout.php">Deconnexion</a>
-                
-        </div> 
-    </div>   
-</div> </div> 
-         
-     </div>
-     
-     <?php endif?>
-     
-     <?php if($connectEtudiant):?>
-        
-        <div style="display:flex; "class="container-fluid cadre-principal">
-
-        <div class="d-flex align-items-center justify-content-center" style=" height: 100%; "> 
-         <div style="padding: 10px;"> 
-            <a href="#" class="btn btn-primary" role="button">Deposer sujet</a> 
         </div>
-         </div>
-         <div class="input-group mb-5" style=" height:100px; margin-left: 140vh;">
-         <div class = "col-xs-12 col-sm-6 text-right">
-            
-            <a href = "back/logout.php">Deconnexion</a>
-        </div> 
-    </div> 
-     </div>
-
+    </form>
     
-    </div>
-
-     <?php endif?>
-
-
+    
+     
 
      <?php
             
@@ -159,37 +121,45 @@
                FROM suject e
                JOIN etudiant s ON e.matricule = s.matricule";
                if(!$connect){
-                   $sql.=" where etatArt='VALIDE'";
+                   $sql.=" where niveau='DEFENDU'";
                }
 
+              
 
                 if(isset($_POST['mot_cle'])){
                     $mot_cle=$_POST['mot_cle'];
-                    $sql='SELECT e.idsuject,e.intitule,s.nom,s.postnom,s.prenom,s.matricule
+                    $sql='SELECT e.idsuject,e.annAcad,e.intitule,s.nom,s.postnom,s.prenom,s.matricule
                     FROM suject e
                     JOIN etudiant s ON e.matricule = s.matricule
                     WHERE e.intitule LIKE "%' .$mot_cle . '%"';
                     $result=$conn->query($sql);
-                }
-                $stmt=$pdo->query($sql);
-                $sujects=$stmt->fetchAll();
-
+                    
+                    foreach ($result as $ligne) {
+                        echo '<tr>';
+                        //echo '<td>'.$ligne['intitule'].'</td><td>'.$ligne['annAcad'].'</td><td>'.$ligne['nom'].'</td><td>'.$ligne['postnom'].'</td>';
+                        //echo '<td>'.$ligne['prenom'];
+                            
+                    }
+                    }
+                    $stmt=$pdo->query($sql);
+                    $sujects=$stmt->fetchAll();
+                    
+                
                
               if (!empty($sujects)) {
                 echo '<div class="container-fluid cadre-principal">';
                 echo '<table id="user_data" class="table table-bordered table-striped" border="1" style="width:100%;align:right;font-size:13px; border-style:solid; border-color:red;border-collapse:collapse">';
                 echo '<tr><th>intitule</th><th>Année académique</th><th>nom</th><th>postnom</th><th>prenom</th>';
-                if($connect) echo '<th>Etat</th>';
-
+                
+                
                 foreach ($sujects as $suject) {
-                    echo '<tr>';
-                    echo '<td>'.$suject['intitule'].'</td><td>'.$suject['annAcad'].'</td><td>'.$suject['nom'].'</td><td>'.$suject['postnom'].'</td>';
-                    echo '<td>'.$suject['prenom'];
                     $idSuject=$suject['idSuject'];
-                    if($connect){
-                        echo '<a href="back/validation.php?idSuject='.$idSuject.'"><img src="assets/img/validation.png" width="30px"></a>';
-                    }
-                    if($connect) echo '</td><td>'.$suject['etatArt'].'</td></tr>';
+                    echo '<tr>';
+                    echo '<td><a href = "back/fiche.php?idSuject='.$idSuject.'">'.$suject['intitule'].'</a></td><td>'.$suject['annAcad'].'</td><td>'.$suject['nom'].'</td><td>'.$suject['postnom'].'</td>';
+                    echo '<td>'.$suject['prenom'];
+                    
+                    
+                    
                 }
                 echo '</table>';
             } else {
